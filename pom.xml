@@ -9,13 +9,14 @@
     <version>1.0001-SNAPSHOT</version>
 
     <!-- https://mvnrepository.com/artifact/org.openjfx/javafx -->
-    <dependency>
-        <groupId>org.openjfx</groupId>
-        <artifactId>javafx</artifactId>
-        <version>11</version>
-        <type>pom</type>
-    </dependency>
-
+    <dependencies>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx</artifactId>
+            <version>11</version>
+            <type>pom</type>
+        </dependency>
+    </dependencies>
 
 
 </project>
