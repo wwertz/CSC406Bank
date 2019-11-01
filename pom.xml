@@ -7,10 +7,14 @@
     <groupId>CSC406</groupId>
     <artifactId>CSC406Bank</artifactId>
     <version>1.0001-SNAPSHOT</version>
-    <properties>
-        <java.version>11</java.version>
-    </properties>
 
+    <!-- https://mvnrepository.com/artifact/org.openjfx/javafx -->
+    <dependency>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx</artifactId>
+        <version>11</version>
+        <type>pom</type>
+    </dependency>
 
 
 
