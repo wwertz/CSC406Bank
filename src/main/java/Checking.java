@@ -1,5 +1,7 @@
 public class Checking extends  Account{
 
+    //********************************still needs interest****************************************8
+
     char type; //t = TMB and g = Gold/Diamond
     boolean hasBackup;
     int backupID; //saving account ID

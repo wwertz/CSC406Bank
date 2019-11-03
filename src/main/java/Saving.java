@@ -1,15 +1,16 @@
-
 import java.util.Date;
 import java.time.*;
+
+//********************************still needs interest****************************************8
 
 public class Saving extends  Account{
 
     char type; // s = simple and c = CD
     double interestRate;
-    Date CDdate; //date CD matures
+    LocalDate CDdate; //date CD matures
 
 
-    public Saving(int accountID, int custID, double balance, char type, Date CDdate, double interestRate) {
+    public Saving(int accountID, int custID, double balance, char type, LocalDate CDdate, double interestRate) {
         super(accountID, custID, balance);
         this.type = type;
         this.CDdate = CDdate;
@@ -31,22 +32,22 @@ public class Saving extends  Account{
                 System.out.println("not enough cash");
             }
         }else if(type=='c'){
-            /*
-            if(CDdate>){
+            //is CD and before mature date
+            if(LocalDate.now().isBefore(CDdate)){
                 balance -= balance*.20;                //not right*********************
                 balance -= amount;
             }else {
                 balance -= amount;
             }
-            */
+
         }
     }
 
     //getters and setters
     public char getType() {return type;}
     public void setType(char type) {this.type = type;}
-    public Date getCDdate() {return CDdate;}
-    public void setCDdate(Date CDdate) {this.CDdate = CDdate;}
+    public LocalDate getCDdate() {return CDdate;}
+    public void setCDdate(LocalDate CDdate) {this.CDdate = CDdate;}
     public double getInterestRate() {return interestRate;}
     public void setInterestRate(double interestRate) {this.interestRate = interestRate;}
 
