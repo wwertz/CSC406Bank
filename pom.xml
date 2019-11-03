@@ -7,14 +7,25 @@
     <groupId>CSC406</groupId>
     <artifactId>CSC406Bank</artifactId>
     <version>1.0001-SNAPSHOT</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <!-- https://mvnrepository.com/artifact/org.openjfx/javafx -->
     <dependencies>
         <dependency>
             <groupId>org.openjfx</groupId>
-            <artifactId>javafx</artifactId>
+            <artifactId>javafx-fxml</artifactId>
             <version>11</version>
-            <type>pom</type>
         </dependency>
     </dependencies>
 
