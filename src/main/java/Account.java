@@ -14,7 +14,6 @@ public class Account {
         this.accountID = accountID;
         this.custID = custID;
         this.balance = balance;
-        dateOpened = LocalDate.now();
     }
 
     //getter and setters

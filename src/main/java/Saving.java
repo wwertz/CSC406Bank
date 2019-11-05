@@ -1,4 +1,3 @@
-import java.util.Date;
 import java.time.*;
 
 //********************************still needs interest****************************************8
@@ -8,10 +7,12 @@ public class Saving extends  Account{
     char type; // s = simple and c = CD
     double interestRate;
     LocalDate CDdate; //date CD matures
+    LocalDate dateOpened;
 
 
-    public Saving(int accountID, int custID, double balance, char type, LocalDate CDdate, double interestRate) {
+    public Saving(int accountID, int custID, double balance, LocalDate dateOpened, char type, LocalDate CDdate, double interestRate) {
         super(accountID, custID, balance);
+        this.dateOpened = dateOpened;
         this.type = type;
         this.CDdate = CDdate;
         this.interestRate = interestRate;
@@ -34,12 +35,10 @@ public class Saving extends  Account{
         }else if(type=='c'){
             //is CD and before mature date
             if(LocalDate.now().isBefore(CDdate)){
-                balance -= balance*.20;                //not right*********************
                 balance -= amount;
             }else {
                 balance -= amount;
             }
-
         }
     }
 
@@ -50,5 +49,7 @@ public class Saving extends  Account{
     public void setCDdate(LocalDate CDdate) {this.CDdate = CDdate;}
     public double getInterestRate() {return interestRate;}
     public void setInterestRate(double interestRate) {this.interestRate = interestRate;}
+    public double getBalance() {return balance;}
+    public void setBalance(int balance) {this.balance = balance;}
 
 }//end of Saving

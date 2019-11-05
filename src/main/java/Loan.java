@@ -1,11 +1,10 @@
 import java.time.LocalDate;
-import java.util.Date;
 
-//********************************still needs interest****************************************8
-
-public class Loan {
+public class Loan extends Account{
+    //l=long, s=short and c=credit card
+    char type;
     double initialBalance;
-    double currentBalance;
+    double balance;
     double interestRate;
     double amountDue;
     LocalDate dueDate; // due date
@@ -14,32 +13,61 @@ public class Loan {
     boolean flag = false;
 
     //constructor
-    public Loan(double initialBalance, double currentBalance, double interestRate, double amountDue, LocalDate dueDate, LocalDate notifiedDate, LocalDate lastPaymentDate) {
+    public Loan(int accountID, int custID, double balance, double initialBalance, double interestRate, double amountDue,
+                LocalDate dueDate, LocalDate notifiedDate, LocalDate lastPaymentDate, boolean flag, char type) {
+        super(accountID, custID, balance);
         this.initialBalance = initialBalance;
-        this.currentBalance = currentBalance;
+        this.balance = balance;
         this.interestRate = interestRate;
         this.amountDue = amountDue;
         this.dueDate = dueDate;
         this.notifiedDate = notifiedDate;
         this.lastPaymentDate = lastPaymentDate;
+        this.flag = flag;
+        this.type = type;
     }
 
+    //make a payment
     public void payment(double amount){
         //check to see if late
-        if(LocalDate.now().isAfter(dueDate)){               //late
-            flag = true;
-            currentBalance -= amount + 75.00;                      //add late fee
-            lastPaymentDate = LocalDate.now();
-        }else{                                              //not late
-            flag = false;
-            currentBalance -= amount;
-            lastPaymentDate = LocalDate.now();
+
+        if (type=='l' || type=='s') {                           //loans
+            if(LocalDate.now().isAfter(dueDate)){               //late
+                flag = true;
+                balance += balance*interestRate/100;
+                balance += 75.00;
+                balance -= amount;
+                lastPaymentDate = LocalDate.now();
+            }else{                                             //not late
+                flag = false;
+                balance += balance*interestRate/100;
+                balance -= amount;
+                lastPaymentDate = LocalDate.now();
+            }
+        }else{                                                  //credit cards
+            LocalDate beforeCharge = LocalDate.of(notifiedDate.getYear(), notifiedDate.getMonth(), 10);
+            if(LocalDate.now().isAfter(dueDate)){               //late
+                flag = true;
+                balance += balance*interestRate/100;
+                balance += 75.00;
+                balance -= amount;
+                lastPaymentDate = LocalDate.now();
+            }else if(LocalDate.now().isBefore(beforeCharge)){  //no finance charge
+                flag = false;
+                balance -= amount;
+                lastPaymentDate = LocalDate.now();
+            }else{                                             //on time with finance charge
+                flag = true;
+                balance += balance*interestRate/100;
+                balance -= amount;
+                lastPaymentDate = LocalDate.now();
+            }
         }
     }
 
+
     //getter and setter
     public double getInitialBalance() {return initialBalance;}
-    public void setInitialBalance(double initialBalance) {this.initialBalance = initialBalance;}
     public double getInterestRate() {return interestRate;}
     public void setInterestRate(double interestRate) {this.interestRate = interestRate;}
     public double getAmountDue() {return amountDue;}
@@ -52,4 +80,6 @@ public class Loan {
     public void setLastPaymentDate(LocalDate lastPaymentDate) {this.lastPaymentDate = lastPaymentDate;}
     public boolean isFlag() {return flag;}
     public void setFlag(boolean flag) {this.flag = flag;}
+    public double getBalance() {return balance;}
+    public void setBalance(int balance) {this.balance = balance;}
 }//end of loan

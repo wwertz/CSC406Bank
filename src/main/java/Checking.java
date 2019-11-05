@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public class Checking extends  Account{
 
     //********************************still needs interest****************************************8
@@ -5,16 +7,18 @@ public class Checking extends  Account{
     char type; //t = TMB and g = Gold/Diamond
     boolean hasBackup;
     int backupID; //saving account ID
+    LocalDate dateOpened;
 
     //constructor
-    public Checking(int accountID, int custID, double balance, boolean hasBackup, int backupID) {
+    public Checking(int accountID, int custID, double balance, LocalDate dateOpened, boolean hasBackup, int backupID) {
         super(accountID, custID, balance);
+        this.dateOpened = dateOpened;
         this.hasBackup = hasBackup;
         this.backupID = backupID;
         checkType();
     }
 
-    //deposit
+    //deposit and check to see if upgrade or down grade
     public void deposit(double amount){
         balance += amount;
         checkType();
@@ -41,6 +45,7 @@ public class Checking extends  Account{
             balance -= .50;
     }
 
+    //check type
     public char checkType(){
         if(balance>=1000){
             return type = 'g';
@@ -50,7 +55,14 @@ public class Checking extends  Account{
     }
 
     public char getType() {return type;}
-    public void setType(char type) {this.type = type;}
+    public void setType(char type) {
+        if(balance>=1000)
+            type = 'g';
+        else
+            type = 's';
+    }
     public boolean isHasBackup() {return hasBackup;}
     public void setHasBackup(boolean hasBackup) {this.hasBackup = hasBackup;}
+    public double getBalance() {return balance;}
+    public void setBalance(int balance) {this.balance = balance;}
 }//end of Checking
