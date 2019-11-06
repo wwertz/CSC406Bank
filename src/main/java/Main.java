@@ -12,17 +12,28 @@ public class Main {
     public static void main(String[] args) {
         //LoginScreen initial = new LoginScreen();
 
-Loan a1 = new Loan(1000, 423148894, 3579, 5000,.15,  95.83, LocalDate.of(2019,11,27),
-        LocalDate.of(2019,10,1),LocalDate.of(2019,8,20), false, 's');
+        Loan a1 = new Loan(1000, 423148894, 3579, 5000, .15, 95.83, LocalDate.of(2019, 11, 27), LocalDate.of(2019, 10, 1), LocalDate.of(2019, 8, 20), false, 's');
 
-System.out.println(a1.getLastPaymentDate());
-a1.payment(95.83);
-System.out.println(a1.getLastPaymentDate());
-System.out.println(a1.getBalance());
-
+        System.out.println(a1.getLastPaymentDate());
+        a1.payment(95.83);
+        System.out.println(a1.getLastPaymentDate());
+        System.out.println(a1.getBalance());
 
 
 
+
+//Customer(String ssn, String firstName, String lastName, String address, String city, String state, String zipcode, String atmCard)
+        Customer RonaldJones = new Customer("423-45-2345", "Ronald", "Jones", "114 North 4th",
+                "Clarkesdale", "MO", "64493", "2.89965E+15");
+
+
+//SavingsAccounts(Customer customer, int savingsAccID, double acctBalance, double cIntRate, String dateOpened, Boolean isACD, String cdCloseDate)
+        Customer.SavingsAccounts one = new Customer.SavingsAccounts(RonaldJones, 1, 5000,
+                .15, "20151234", true, "20161234");
+
+//CheckingAccounts(Customer customer, int checkingAccID, double acctBalance, String dateOpened, boolean isGold, int backupSavings, int overdrafts)
+        Customer.CheckingAccounts two = new Customer.CheckingAccounts(RonaldJones, 1, 300,
+                "20151234", true, 300, 3);
 
 
 
