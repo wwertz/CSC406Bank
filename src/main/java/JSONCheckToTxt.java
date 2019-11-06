@@ -21,7 +21,7 @@ public class JSONCheckToTxt {
 //        company.add("Compnay: Google");
 //        obj.put("Company List", company);
 
-        try (PrintWriter file = new PrintWriter(AID +".txt")) {
+        try (PrintWriter file = new PrintWriter("/Checkings/"+AID +".txt")) {
             file.write(obj.toJSONString());
             System.out.println("Successfully wrote checkings "+AID+" to file");
             System.out.println("\nJSON Object: " + obj);

@@ -17,7 +17,7 @@ public class JSONSavToTxt {
         obj.put("CDdate", CDdate);
         obj.put("interestRate", interestRate);
 
-        try (PrintWriter file = new PrintWriter(AID +".txt")) {
+        try (PrintWriter file = new PrintWriter("/Savings/"+AID +".txt")) {
             file.write(obj.toJSONString());
             System.out.println("Successfully wrote savings "+AID+" to file");
             System.out.println("\nJSON Object: " + obj);
