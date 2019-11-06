@@ -1,23 +1,24 @@
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
-import java.util.zip.GZIPInputStream;
-
+import java.time.*;
 
 /**
- *      Dates need to be changed from String to localdate
+ * Dates need to be changed from String to localdate
  *
- *      I question if things dealing with money should be BigDecimal or ints. Not long or double so we dont have
- *      floating point errors
+ * I question if things dealing with money should be BigDecimal or ints. Not long or double so we dont have
+ * floating point errors
  *
-**/
+ **/
 
 class Customer {
 
-    private String ssn,firstName, lastname, address, city, state, zipcode, atmCard;
+    private String ssn, firstName, lastname, address, city, state, zipcode, atmCard;
 
+    char type; // s = simple and c = CD
+    double interestRate;
+    LocalDate CDdate;
+    LocalDate dateOpened;
 
     Customer(String ssn, String firstName, String lastName, String address, String city, String state,
-                    String zipcode, String atmCard){
+             String zipcode, String atmCard) {
 
         this.ssn = ssn;
         this.firstName = firstName;
@@ -39,7 +40,7 @@ class Customer {
 
 
         SavingsAccounts(Customer customer, int savingsAccID, double acctBalance, double cIntRate, String dateOpened,
-                         Boolean isACD, String cdCloseDate) {
+                        Boolean isACD, String cdCloseDate) {
             this.customer = customer;
             this.savingsAccID = savingsAccID;
             this.acctBalance = acctBalance;
@@ -51,8 +52,29 @@ class Customer {
         }
 
         @Override
-        public void run() {
+        public void run() { }
 
+
+        private void withdrawalSaving(double amount) {
+//            //check amount vs balance
+//            if (type == 't') {
+//                if (amount <= acctBalance)
+//                    acctBalance -= amount;
+//                else if (amount > acctBalance) {
+//                    System.out.println("not enough cash");
+//                }
+//            } else if (type == 'c') {
+//                //is CD and before mature date
+//                if (LocalDate.now().isBefore(CDdate)) {
+//                    acctBalance -= amount;
+//                } else {
+//                    acctBalance -= amount;
+//                }
+//            }
+        }
+
+        private void depositSavings(double amount) {
+            acctBalance += amount;
         }
     }
 
@@ -78,19 +100,34 @@ class Customer {
 
 
         @Override
-        public void run() {
+        public void run() { }
 
+
+        private void withdrawalChecking(double amount) {
+//            //check amount vs balance
+//            if (amount >= acctBalance) {
+//                System.out.println("not enough in balance, checking for backup");
+//                if (hasBackup == true) {
+//                    //****************************needs update after savings finished*******************************
+//                }
+//            } else if (amount < acctBalance) {
+//                acctBalance -= amount;
+//            }
+//
+//            //check for fees
+//            if (type == 't')
+//                acctBalance -= .50;
         }
+
+        private void depositChecking(double amount) {
+//            acctBalance += amount;
+//            checkType();
+//
+//            //check for fees
+//            if (type == 't')
+//                acctBalance -= .50;
+        }
+
     }
-
-
-    private void withdrawal(double acctbalance){}
-
-    private void deposit(double acctbalance){}
-
-
-
-
-
 
 }
