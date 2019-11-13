@@ -10,13 +10,13 @@ import java.time.*;
 
 public class Saving extends  Account{
 
-    char type; // s = simple and c = CD
-    double interestRate;
-    LocalDate CDdate; //date CD matures
-    LocalDate dateOpened;
+    protected char type; // s = simple and c = CD
+    protected double interestRate;
+    protected LocalDate CDdate; //date CD matures
+    protected LocalDate dateOpened;
 
 
-    public Saving(int accountID, int custID, double balance, LocalDate dateOpened, char type, LocalDate CDdate, double interestRate) {
+    public Saving(String accountID, String custID, double balance, LocalDate dateOpened, char type, LocalDate CDdate, double interestRate) {
         super(accountID, custID, balance);
         this.dateOpened = dateOpened;
         this.type = type;

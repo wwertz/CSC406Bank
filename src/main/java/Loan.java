@@ -1,23 +1,23 @@
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Loan extends Account{
     //l=long, s=short and c=credit card
-    char type;
-    double initialBalance;
-    double balance;
-    double interestRate;
-    double amountDue;
-    LocalDate dueDate; // due date
-    LocalDate notifiedDate; //date bill sent
-    LocalDate lastPaymentDate; //date of last payment made
-    boolean flag = false;
+    protected char type;
+    protected double initialBalance;
+    protected double interestRate;
+    protected double amountDue;
+    protected LocalDate dueDate; // due date
+    protected LocalDate notifiedDate; //date bill sent
+    protected LocalDate lastPaymentDate; //date of last payment made
+    protected boolean flag = false;
+    protected ArrayList<String> creditHistory;
 
     //constructor
-    public Loan(int accountID, int custID, double balance, double initialBalance, double interestRate, double amountDue,
+    public Loan(String accountID, String custID, double balance, double initialBalance, double interestRate, double amountDue,
                 LocalDate dueDate, LocalDate notifiedDate, LocalDate lastPaymentDate, boolean flag, char type) {
         super(accountID, custID, balance);
         this.initialBalance = initialBalance;
-        this.balance = balance;
         this.interestRate = interestRate;
         this.amountDue = amountDue;
         this.dueDate = dueDate;
@@ -52,19 +52,21 @@ public class Loan extends Account{
                 balance += 75.00;
                 balance -= amount;
                 lastPaymentDate = LocalDate.now();
+                creditHistory.add("Payment of " +Double.toString(amount) +" on "+ LocalDate.now()+ "***late***");
             }else if(LocalDate.now().isBefore(beforeCharge)){  //no finance charge
                 flag = false;
                 balance -= amount;
                 lastPaymentDate = LocalDate.now();
+                creditHistory.add("Payment of " +Double.toString(amount) +" on "+ LocalDate.now());
             }else{                                             //on time with finance charge
                 flag = true;
                 balance += balance*interestRate/100;
                 balance -= amount;
                 lastPaymentDate = LocalDate.now();
+                creditHistory.add("Payment of " +Double.toString(amount) +" on "+ LocalDate.now());
             }
         }
     }
-
 
     //getter and setter
     public double getInitialBalance() {return initialBalance;}
@@ -80,6 +82,4 @@ public class Loan extends Account{
     public void setLastPaymentDate(LocalDate lastPaymentDate) {this.lastPaymentDate = lastPaymentDate;}
     public boolean isFlag() {return flag;}
     public void setFlag(boolean flag) {this.flag = flag;}
-    public double getBalance() {return balance;}
-    public void setBalance(int balance) {this.balance = balance;}
 }//end of loan
