@@ -39,7 +39,7 @@ public class LoginScreen {
                 }
                 if (value.equals("ATM")){
                     loginScreen.dispose();
-                    ATMScreen ATM = new ATMScreen();
+                    ATMLogin ATM = new ATMLogin();
                 }
             }
         });
