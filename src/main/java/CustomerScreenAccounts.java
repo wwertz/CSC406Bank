@@ -4,10 +4,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class CustomerScreenAccounts {
-    private JTextField chooseAnAccountToTextField;
     private JComboBox Accounts;
     private JButton backButton;
     private JPanel panel1;
+    private JButton transferButton;
+    private JComboBox destAccountBox;
+    private JComboBox sourceAccountBox;
+    private JLabel From;
+    private JLabel To;
+    private JTable accountInfo;
+    private JTextField Amount;
 
     public CustomerScreenAccounts() {
         final JFrame cusScreen = new JFrame("PitA Bank");
@@ -23,5 +29,14 @@ public class CustomerScreenAccounts {
                 CustomerScreenSSN screenSSN = new CustomerScreenSSN();
             }
         });
+        accountInfo.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [][] {
+                {null,null,null}
+                },
+                new String []{
+                        "Account Type","Account ID", "Balance"
+                 }
+                ) {public boolean isCellEditable(int row, int column){return false;}}
+        );
     }
 }

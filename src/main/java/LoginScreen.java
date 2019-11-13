@@ -28,6 +28,10 @@ public class LoginScreen {
                     loginScreen.dispose();
                     CustomerScreenSSN cusScreen = new CustomerScreenSSN();
                 }
+                if (value.equals("Teller")){
+                    loginScreen.dispose();
+                    EmpAccountLookup lookupScreen = new EmpAccountLookup();
+                }
             }
         });
     }
