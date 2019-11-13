@@ -8,7 +8,7 @@
 import java.time.LocalDate;
 
 public class Main {
-
+    public static boolean manager = false;
     public static void main(String[] args) {
         LoginScreen initial = new LoginScreen();
 

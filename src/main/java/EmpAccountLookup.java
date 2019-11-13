@@ -29,7 +29,12 @@ public class EmpAccountLookup {
             @Override
             public void actionPerformed(ActionEvent e) {
                 lookupScreen.dispose();
-                LoginScreen loginScreen = new LoginScreen();
+                if(!Main.manager) {
+                    LoginScreen loginScreen = new LoginScreen();
+                }
+                else{
+                    ManagerSelectFunction managerScreen = new ManagerSelectFunction();
+                }
             }
         });
     }

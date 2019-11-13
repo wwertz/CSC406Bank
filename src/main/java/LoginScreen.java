@@ -17,9 +17,9 @@ public class LoginScreen {
         loginScreen.pack();
         loginScreen.setVisible(true);
         Users.addItem("Customer");
+        Users.addItem("ATM");
         Users.addItem("Teller");
         Users.addItem("Manager");
-
         Login.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -31,6 +31,15 @@ public class LoginScreen {
                 if (value.equals("Teller")){
                     loginScreen.dispose();
                     EmpAccountLookup lookupScreen = new EmpAccountLookup();
+                }
+                if (value.equals("Manager")){
+                    loginScreen.dispose();
+                    Main.manager = true;
+                    ManagerSelectFunction managerScreen = new ManagerSelectFunction();
+                }
+                if (value.equals("ATM")){
+                    loginScreen.dispose();
+                    ATMScreen ATM = new ATMScreen();
                 }
             }
         });
