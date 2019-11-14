@@ -18,6 +18,7 @@ public class TellerScreen {
     private JComboBox toAccount;
     private JTextArea TransferAmount;
     private JTable accountInfo;
+    private JButton closeAccountButton;
 
     public TellerScreen() {
         final JFrame telScreen = new JFrame("PitA Bank");
@@ -26,6 +27,7 @@ public class TellerScreen {
         telScreen.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         telScreen.pack();
         telScreen.setVisible(true);
+        if (!Main.manager){closeAccountButton.setVisible(false);}
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

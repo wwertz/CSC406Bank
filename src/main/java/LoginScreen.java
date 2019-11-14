@@ -25,10 +25,12 @@ public class LoginScreen {
             public void actionPerformed(ActionEvent e) {
                 String value = Users.getSelectedItem().toString();
                 if (value.equals("Customer")){
+                    Main.manager = false;
                     loginScreen.dispose();
                     CustomerScreenSSN cusScreen = new CustomerScreenSSN();
                 }
                 if (value.equals("Teller")){
+                    Main.manager = false;
                     loginScreen.dispose();
                     EmpAccountLookup lookupScreen = new EmpAccountLookup();
                 }
@@ -38,6 +40,7 @@ public class LoginScreen {
                     ManagerSelectFunction managerScreen = new ManagerSelectFunction();
                 }
                 if (value.equals("ATM")){
+                    Main.manager = false;
                     loginScreen.dispose();
                     ATMLogin ATM = new ATMLogin();
                 }

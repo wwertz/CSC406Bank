@@ -33,7 +33,8 @@ public class ManagerSelectFunction {
         interestRatesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                managerScreen.dispose();
+                InterestScreen interestScreen = new InterestScreen();
             }
         });
         backButton.addActionListener(new ActionListener() {
