@@ -19,14 +19,20 @@ public class TellerScreen {
     private JTextArea TransferAmount;
     private JTable accountInfo;
     private JButton closeAccountButton;
+    private JMenuItem logout;
+    private JMenuBar menu;
 
     public TellerScreen() {
+        menu = new JMenuBar();
+        logout = new JMenuItem("Logout");
+        menu.add(logout);
         final JFrame telScreen = new JFrame("PitA Bank");
         telScreen.setContentPane(panel1);
         telScreen.setPreferredSize(new Dimension(800, 600));
         telScreen.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         telScreen.pack();
         telScreen.setVisible(true);
+        telScreen.setJMenuBar(menu);
         if (!Main.manager){closeAccountButton.setVisible(false);}
         backButton.addActionListener(new ActionListener() {
             @Override
@@ -44,5 +50,12 @@ public class TellerScreen {
                 }
                 ) {public boolean isCellEditable(int row, int column){return false;}}
         );
+        logout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                telScreen.dispose();
+                LoginScreen loginScreen = new LoginScreen();
+            }
+        });
     }
 }

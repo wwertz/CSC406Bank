@@ -14,14 +14,20 @@ public class CustomerScreenAccounts {
     private JLabel To;
     private JTable accountInfo;
     private JTextField Amount;
+    private JMenuItem logout;
+    private JMenuBar menu;
 
     public CustomerScreenAccounts() {
+        menu = new JMenuBar();
+        logout = new JMenuItem("Logout");
+        menu.add(logout);
         final JFrame cusScreen = new JFrame("PitA Bank");
         cusScreen.setContentPane(panel1);
         cusScreen.setPreferredSize(new Dimension(800, 600));
         cusScreen.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         cusScreen.pack();
         cusScreen.setVisible(true);
+        cusScreen.setJMenuBar(menu);
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -38,5 +44,12 @@ public class CustomerScreenAccounts {
                  }
                 ) {public boolean isCellEditable(int row, int column){return false;}}
         );
+        logout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cusScreen.dispose();
+                LoginScreen loginScreen = new LoginScreen();
+            }
+        });
     }
 }
