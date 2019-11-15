@@ -14,6 +14,9 @@ public class CustomerScreenAccounts {
     private JLabel To;
     private JTable accountInfo;
     private JTextField Amount;
+    private JButton cancelCheckButton;
+    private JTextField textField1;
+    private JTable transactions;
     private JMenuItem logout;
     private JMenuBar menu;
 
@@ -43,6 +46,15 @@ public class CustomerScreenAccounts {
                         "Account Type","Account ID", "Balance"
                  }
                 ) {public boolean isCellEditable(int row, int column){return false;}}
+        );
+        transactions.setModel(new javax.swing.table.DefaultTableModel(
+                                     new Object [][] {
+                                             {null,null,null,null}
+                                     },
+                                     new String []{
+                                             "Date", "Processed","Amount", "Desc"
+                                     }
+                             ) {public boolean isCellEditable(int row, int column){return false;}}
         );
         logout.addActionListener(new ActionListener() {
             @Override

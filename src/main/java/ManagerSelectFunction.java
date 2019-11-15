@@ -57,5 +57,12 @@ public class ManagerSelectFunction {
                 LoginScreen loginScreen = new LoginScreen();
             }
         });
+        openAccountButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                managerScreen.dispose();
+                CreateAccountAndCust createAccountAndCust = new CreateAccountAndCust();
+            }
+        });
     }
 }
