@@ -5,11 +5,15 @@
 // Sam Poirer
 // Wayne Wertz
 
+import Users.*;
+
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 
 public class Main {
     public static boolean manager = false;
@@ -28,12 +32,18 @@ public class Main {
 
 
 
-//Customer(String ssn, String firstName, String lastName, String address, String city, String state, String zipcode, String atmCard)
-        Customer RonaldJones = new Customer("423-45-2345", "Ronald", "Jones", "114 North 4th",
-                "Clarkesdale", "MO", "64493", "2.89965E+15");
+//Customer.Customer(String ssn, String firstName, String lastName, String address, String city, String state, String zipcode, String atmCard)
+
+        User BobBilly = new Teller("111-11-1111","Bob", "Billy");
+        User TimThomas = new Manager("222-22-2222","Tim", "Thomas");
+        Customer RonaldJones = new Customer("423-45-2345", "Ronald", "Jones", "114 North 4th", "Clarkesdale", "MO", "64493", "2.89965E+15");
+
+
+
 
 
     }//end of main method
+
     public static void readChecks(ArrayList<Check> list){
         File file = new File("src/Checks.txt");
         try {
@@ -45,8 +55,10 @@ public class Main {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-//public Check(String checkNumber, String checkingAccID, String date, double amount, boolean processed) {
 
+//public Check(String checkNumber, String checkingAccID, String date, double amount, boolean processed) {
     }
+
+
 
 }//end of Main Class
