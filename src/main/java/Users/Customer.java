@@ -1,4 +1,4 @@
-import java.time.*;
+package Users;
 
 /**
  * Dates need to be changed from String to localdate
@@ -8,16 +8,15 @@ import java.time.*;
  *
  **/
 
-class Customer {
+public class Customer extends User {
 
-    private String ssn, firstName, lastname, address, city, state, zipcode, atmCard;
+    //private int ID;
+    private String ssn, firstName, lastName, address, city, state, zipcode, atmCard;
 
-    Customer(String ssn, String firstName, String lastName, String address, String city, String state,
+    public Customer(String ssn, String firstName, String lastName, String address, String city, String state,
              String zipcode, String atmCard) {
 
-        this.ssn = ssn;
-        this.firstName = firstName;
-        this.lastname = lastName;
+        super(ssn, firstName, lastName);
         this.address = address;
         this.city = city;
         this.state = state;
@@ -26,13 +25,21 @@ class Customer {
 
     }
 
+
+
+
+
     //getters
-    public String getSsn() {return ssn;}
-    public String getFirstName() {return firstName;}
-    public String getLastname() {return lastname;}
+
     public String getAddress() {return address;}
     public String getCity() {return city;}
     public String getState() {return state;}
     public String getZipcode() {return zipcode;}
     public String getAtmCard() {return atmCard;}
 }
+//CD's
+//CheckingAccount
+//Savings accounts
+//CreditCard
+//DebitAccount
+//Loans
