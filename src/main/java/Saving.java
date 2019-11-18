@@ -11,16 +11,25 @@ import java.time.*;
 public class Saving extends  Account{
 
     protected char type; // s = simple and c = CD
+    protected boolean isCD;
     protected double interestRate;
     protected LocalDate CDdate; //date CD matures
     protected LocalDate dateOpened;
 
 
-    public Saving(String accountID, String custID, double balance, LocalDate dateOpened, char type, LocalDate CDdate, double interestRate) {
+    public Saving( String custID, String accountID, double balance, double interestRate, String dateOpened, boolean isCD, String CDdate) {
         super(accountID, custID, balance);
-        this.dateOpened = dateOpened;
-        this.type = type;
-        this.CDdate = CDdate;
+        if(dateOpened.length()>4)
+            this.dateOpened = LocalDate.of(Integer.parseInt(dateOpened.substring(6)),
+                    Integer.parseInt(dateOpened.substring(0,2)), Integer.parseInt(dateOpened.substring(3,5)));
+        if(isCD)
+            type = 'c';
+        else
+            type = 's';
+        if(CDdate.length()>4)
+            this.CDdate = LocalDate.of(Integer.parseInt(CDdate.substring(6)),
+                    Integer.parseInt(CDdate.substring(0,2)), Integer.parseInt(CDdate.substring(3,5)));
+        this.isCD = isCD;
         this.interestRate = interestRate;
     }
 
@@ -32,7 +41,7 @@ public class Saving extends  Account{
     //withdrawal
     public void withdrawal(double amount){
         //check amount vs balance
-        if(type=='t'){
+        if(type=='s'){
             if(amount<=balance)
                 balance -= amount;
             else if(amount>balance){
@@ -46,6 +55,33 @@ public class Saving extends  Account{
                 balance -= amount;
             }
         }
+    }
+
+    public String toString() {
+        String date;
+        if(dateOpened != null){
+            date = dateOpened.toString();
+            date = date.substring(5,7) +"/"+ date.substring(8) +"/"+ date.substring(0,4);
+        }else {
+            date = null;
+        }
+
+        String cDate;
+        if(CDdate != null){
+            cDate = CDdate.toString();
+            cDate = cDate.substring(5,7) +"/"+ cDate.substring(8) +"/"+ cDate.substring(0,4);
+        }else {
+            cDate = null;
+        }
+
+        return
+                custID + ',' +
+                        accountID + ',' +
+                        balance + ',' +
+                        interestRate + ',' +
+                        date + ',' +
+                        isCD + ',' +
+                        cDate;
     }
 
     //getters and setters

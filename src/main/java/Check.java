@@ -19,13 +19,11 @@ public class Check {
 
     @Override
     public String toString() {
-        return "Check{" +
-                "checkNumber='" + checkNumber + '\'' +
-                ", checkingAccID='" + checkingAccID + '\'' +
-                ", date='" + date + '\'' +
-                ", amount=" + amount +
-                ", processed=" + processed +
-                '}';
+        return checkNumber + ',' +
+                checkingAccID + ',' +
+                date + ',' +
+                amount + ',' +
+                processed;
     }
 
     //getter and setter

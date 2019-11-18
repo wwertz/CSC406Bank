@@ -10,7 +10,6 @@ package Users;
 
 public class Customer extends User {
 
-    //private int ID;
     private String ssn, firstName, lastName, address, city, state, zipcode, atmCard;
 
     public Customer(String ssn, String firstName, String lastName, String address, String city, String state,
@@ -25,12 +24,20 @@ public class Customer extends User {
 
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return
+                this.getSsn() + "," +
+                this.getFirstName() + "," +
+                this.getLastName() + "," +
+                address + "," +
+                city + "," +
+                state + "," +
+                zipcode + "," +
+                atmCard;
+    }
 
     //getters
-
     public String getAddress() {return address;}
     public String getCity() {return city;}
     public String getState() {return state;}

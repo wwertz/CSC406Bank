@@ -1,3 +1,5 @@
+//Customer screen
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -14,15 +16,21 @@ public class Loan extends Account{
     protected ArrayList<String> creditHistory;
 
     //constructor
-    public Loan(String accountID, String custID, double balance, double initialBalance, double interestRate, double amountDue,
-                LocalDate dueDate, LocalDate notifiedDate, LocalDate lastPaymentDate, boolean flag, char type) {
+    public Loan(String custID, String accountID, double initialBalance, double balance, double interestRate,
+                String dueDate, String notifiedDate, double amountDue, String lastPaymentDate, boolean flag, char type) {
         super(accountID, custID, balance);
         this.initialBalance = initialBalance;
         this.interestRate = interestRate;
         this.amountDue = amountDue;
-        this.dueDate = dueDate;
-        this.notifiedDate = notifiedDate;
-        this.lastPaymentDate = lastPaymentDate;
+        if(dueDate.length()>4)
+            this.dueDate = LocalDate.of(Integer.parseInt(dueDate.substring(6)),
+                    Integer.parseInt(dueDate.substring(0,2)), Integer.parseInt(dueDate.substring(3,5)));
+        if(notifiedDate.length()>4)
+            this.notifiedDate = LocalDate.of(Integer.parseInt(notifiedDate.substring(6)),
+                    Integer.parseInt(notifiedDate.substring(0,2)), Integer.parseInt(notifiedDate.substring(3,5)));
+        if(lastPaymentDate.length()>4)
+            this.lastPaymentDate = LocalDate.of(Integer.parseInt(lastPaymentDate.substring(6)),
+                    Integer.parseInt(lastPaymentDate.substring(0,2)), Integer.parseInt(lastPaymentDate.substring(3,5)));
         this.flag = flag;
         this.type = type;
     }
@@ -66,6 +74,47 @@ public class Loan extends Account{
                 creditHistory.add("Payment of " +Double.toString(amount) +" on "+ LocalDate.now());
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        //convert dates back into strings formatted in the database
+        String ddate;
+        if(dueDate != null){
+            ddate = dueDate.toString();
+            ddate = ddate.substring(5,7) +"/"+ ddate.substring(8) +"/"+ ddate.substring(0,4);
+        }else {
+            ddate = null;
+        }
+
+        String ndate;
+        if(notifiedDate != null){
+            ndate = notifiedDate.toString();
+            ndate = ndate.substring(5,7) +"/"+ ndate.substring(8) +"/"+ ndate.substring(0,4);
+        }else {
+            ndate = null;
+        }
+
+        String ldate;
+        if(lastPaymentDate != null){
+            ldate = lastPaymentDate.toString();
+            ldate = ldate.substring(5,7) +"/"+ ldate.substring(8) +"/"+ ldate.substring(0,4);
+        }else {
+            ldate = null;
+        }
+
+        return
+                custID + ',' +
+                accountID + ',' +
+                initialBalance + ',' +
+                balance + ',' +
+                interestRate + ',' +
+                ddate + ',' +
+                ndate + ',' +
+                amountDue + ',' +
+                ldate + ',' +
+                flag + ',' +
+                type;
     }
 
     //getter and setter
