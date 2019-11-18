@@ -1,0 +1,39 @@
+11-15-2019
+Loan Formulas
+1. Amount of Loan
+2. Period in months
+3. Interest Tate
+
+    Payment(principal , + interest)
+
+    Payment for principal
+        amount of the loan divided by months
+        principle = amount / months
+
+
+
+    Interest
+        the interest per year. The first year(??)
+        interest = amount / years * interest / 12
+
+        Payment = amount / months + ( amount / years * interest ) / 12
+
+
+
+    CD's are classically updated yearly
+        update them from inception to 12 month anniversary
+            2010 -> 2012
+            $5000 @ 3%
+            current value of CD = 5000 * months / 12 * 0.03
+            ? ? ? ? ?
+
+                (for CD that has not matured)
+                interest = (startDateYears - stopDateYears ) *  rate * principal
+                penaltyEarlyWithdrawal = 1/2 interest to date
+
+
+    Credit Cards
+        interest = 0.8 * principal * rate / 12
+
+    Savings + checking
+        interest = principal * rate / 12
