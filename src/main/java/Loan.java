@@ -1,5 +1,11 @@
 //Customer screen
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -117,6 +123,55 @@ public class Loan extends Account{
                 type;
     }
 
+    public void JSONLoanToTxt(String custID, String accountID, double initialBalance, double balance, double interestRate,
+                              String dueDate, String notifiedDate, double amountDue, String lastPaymentDate, boolean flag, char type){
+        JSONObject obj = new JSONObject();
+        obj.put("CustomerID", custID);
+        obj.put("AccountID", accountID);
+        obj.put("InitialBalance", initialBalance);
+        obj.put("Balance", balance);
+        obj.put("interestRate", interestRate);
+        obj.put("dueDate", dueDate);
+        obj.put("notifiedDate", notifiedDate);
+        obj.put("amountDue", amountDue);
+        obj.put("lastPaymentDate", lastPaymentDate);
+        obj.put("flag", flag);
+        obj.put("type", type);
+
+        try (PrintWriter file = new PrintWriter("/Loan/"+accountID +".txt")) {
+            file.write(obj.toJSONString());
+            System.out.println("Successfully wrote loan "+accountID+" to file");
+            System.out.println("\nJSON Object: " + obj);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unsuccessful loan Account Write for "+accountID);
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public void JSONTxtToLoan(int AID) {
+        JSONParser parser = new JSONParser();
+        try {
+            Object obj = parser.parse(new FileReader(
+                    "/Loan/"+AID +".txt"));
+
+            JSONObject LOANjsonObject = (JSONObject) obj;
+
+            int custID = (int) LOANjsonObject.get("CustomerID");
+            int accountID = (int) LOANjsonObject.get("AccountID");
+            double initialBalance = (double) LOANjsonObject.get("InitialBalance");
+            double balance = (double) LOANjsonObject.get("Balance");
+            double interestRate = (double) LOANjsonObject.get("interestRate");
+            String dueDate = (String) LOANjsonObject.get("dueDate");
+            String notifiedDate = (String) LOANjsonObject.get("notifiedDate");
+            double amountDue = (double) LOANjsonObject.get("amountDue");
+            String lastPaymentDue = (String) LOANjsonObject.get("lastPaymentDue");
+            boolean flag = (boolean) LOANjsonObject.get("flag");
+            char type = (char) LOANjsonObject.get("type");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     //getter and setter
     public double getInitialBalance() {return initialBalance;}
     public double getInterestRate() {return interestRate;}
