@@ -37,7 +37,7 @@ public class Checking extends  Account{
     }
 
     //withdrawal
-    public void withdrawal(double amount){
+    public double withdrawal(double amount){
         //check amount vs balance
         if(amount>=balance){
             System.out.println("not enough in balance, checking for backup");
@@ -51,6 +51,8 @@ public class Checking extends  Account{
         //check for fees
         if(type=='t')
             balance -= .50;
+
+        return balance;
     }
 
     //check type
@@ -86,6 +88,4 @@ public class Checking extends  Account{
     public void setType(char type) {this.type = type;}
     public boolean isHasBackup() {return hasBackup;}
     public void setHasBackup(boolean hasBackup) {this.hasBackup = hasBackup;}
-    public double getBalance() {return balance;}
-    public void setBalance(int balance) {this.balance = balance;}
 }//end of Checking

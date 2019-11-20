@@ -17,9 +17,9 @@ public class Main {
     //build list
     public static ArrayList<User> customers = new ArrayList<>();
     public static ArrayList<Check> checks = new ArrayList<>();
-    public static ArrayList<Account> checkings = new ArrayList<>();
-    public static ArrayList<Account> savings = new ArrayList<>();
-    public static ArrayList<Account> loans = new ArrayList<>();
+    public static ArrayList<Checking> checkings = new ArrayList<>();
+    public static ArrayList<Saving> savings = new ArrayList<>();
+    public static ArrayList<Loan> loans = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
 
@@ -34,7 +34,7 @@ public class Main {
         LoginScreen initial = new LoginScreen();
 
         //testing
-        stopPayment(checks,"102");
+        stopPayment(checks, checkings,"202");
 
         //wait for system to close
         Runtime.getRuntime().addShutdownHook(new Thread(){
@@ -82,7 +82,7 @@ public class Main {
         System.out.println("read checks");
     }//end of readChecks
 
-    public static void readChecking(ArrayList<Account> list) throws FileNotFoundException {
+    public static void readChecking(ArrayList<Checking> list) throws FileNotFoundException {
         File file = new File("src/Checkings.txt");
         Scanner input = new Scanner(file);
         while(input.hasNextLine()){
@@ -92,7 +92,7 @@ public class Main {
         System.out.println("read checking accounts");
     }//end of readChecking
 
-    public static void readSaving(ArrayList<Account> list) throws FileNotFoundException {
+    public static void readSaving(ArrayList<Saving> list) throws FileNotFoundException {
         File file = new File("src/Savings.txt");
         Scanner input = new Scanner(file);
         while(input.hasNextLine()){
@@ -103,7 +103,7 @@ public class Main {
         System.out.println("read savings account");
     }//end of readSaving
 
-    public static void readLoan(ArrayList<Account> list) throws FileNotFoundException {
+    public static void readLoan(ArrayList<Loan> list) throws FileNotFoundException {
         File file = new File("src/Loans.txt");
         Scanner input = new Scanner(file);
         while(input.hasNextLine()){
@@ -125,12 +125,13 @@ public class Main {
     }//end of writeChecks
 
     //still needs to charge the customer once we get data in
-    public static void stopPayment(ArrayList<Check> list, String checkNumber){
+    public static void stopPayment(ArrayList<Check> list, ArrayList<Checking> checking, String checkNumber){
         for(int i=0; i<list.size(); i++){
             if(list.get(i).getCheckNumber().equals(checkNumber)){
                 if(list.get(i).isProcessed()==false){
                     System.out.println(list.get(i) + "Is removed and wont be processed");
                     list.remove(i);
+                    checking.get(Integer.parseInt(list.get(i).getCheckingAccID())).withdrawal(15.00);
                 }else{
                     System.out.println(list.get(i) + "Was already processed");
                 }

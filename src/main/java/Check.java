@@ -27,6 +27,7 @@ public class Check {
     }
 
     //getter and setter
+    public String getCheckingAccID() {return checkingAccID;}
     public String getCheckNumber() {return checkNumber;}
     public String getDate() {return date;}
     public double getAmount() {return amount;}

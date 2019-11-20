@@ -21,7 +21,7 @@ public abstract class Account {
     public String getCustID() {return custID;}
     public void setCustID(String custID) {this.custID = custID;}
     public double getBalance() {return balance;}
-    public void setBalance(int balance) {this.balance = balance;}
+    public void setBalance(double balance) {this.balance = balance;}
     public LocalDate getDateOpened() {return dateOpened; }
     public void setDateOpened(LocalDate dateOpened) {this.dateOpened = dateOpened;}
 }//end of Account
