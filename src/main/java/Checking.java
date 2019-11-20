@@ -1,6 +1,3 @@
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.PrintWriter;
@@ -91,41 +88,4 @@ public class Checking extends  Account{
     public void setHasBackup(boolean hasBackup) {this.hasBackup = hasBackup;}
     public double getBalance() {return balance;}
     public void setBalance(int balance) {this.balance = balance;}
-
-    public void JSONCheckToTxt(int AID, int CID, double balance, boolean hasBackup, int backupID){
-        JSONObject obj = new JSONObject();
-        obj.put("AccountID", AID);
-        obj.put("CustomerID", CID);
-        obj.put("Balance", balance);
-        obj.put("hasBackup", hasBackup);
-        obj.put("backupID", backupID);
-
-        try (PrintWriter file = new PrintWriter("/Checkings/"+AID +".txt")) {
-            file.write(obj.toJSONString());
-            System.out.println("Successfully wrote checkings "+AID+" to file");
-            System.out.println("\nJSON Object: " + obj);
-        } catch (FileNotFoundException e) {
-            System.out.println("Unsuccessful checking Account Write for "+AID);
-        }
-    }
-
-    @SuppressWarnings("unchecked")
-    public void JSONTxtToCheck(int AID) {
-        JSONParser parser = new JSONParser();
-        try {
-            Object obj = parser.parse(new FileReader(
-                    "/Checkings/"+AID +".txt"));
-
-            JSONObject CHECKjsonObject = (JSONObject) obj;
-
-            int AccountID = (int) CHECKjsonObject.get("AccountID");
-            int CustomerID = (int) CHECKjsonObject.get("CustomerID");
-            double Balance = (double) CHECKjsonObject.get("Balance");
-            boolean hasBackup = (boolean) CHECKjsonObject.get("hasBackup");
-            int backupID = (int) CHECKjsonObject.get("backupID");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 }//end of Checking
