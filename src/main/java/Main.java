@@ -14,13 +14,14 @@ import java.util.Scanner;
 
 public class Main {
     public static boolean manager = false;
+    //build list
+    public static ArrayList<User> customers = new ArrayList<>();
+    public static ArrayList<Check> checks = new ArrayList<>();
+    public static ArrayList<Account> checkings = new ArrayList<>();
+    public static ArrayList<Account> savings = new ArrayList<>();
+    public static ArrayList<Account> loans = new ArrayList<>();
+
     public static void main(String[] args) throws IOException {
-        //build list
-        ArrayList<User> customers = new ArrayList<>();
-        ArrayList<Check> checks = new ArrayList<>();
-        ArrayList<Account> checkings = new ArrayList<>();
-        ArrayList<Account> savings = new ArrayList<>();
-        ArrayList<Account> loans = new ArrayList<>();
 
         //read data from databases
         readCustomer(customers);
@@ -40,11 +41,7 @@ public class Main {
             public void run(){
                 try {
                     //write data to databases
-                    writeData(customers, "Customers.txt");
-                    writeData(checks, "Checks.txt");
-                    writeData(checkings, "Checkings.txt");
-                    writeData(savings, "Savings.txt");
-                    writeData(loans, "Loans.txt");
+                    updateDatabase();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -56,6 +53,14 @@ public class Main {
 
 
     }//end of main method
+
+    public static void updateDatabase() throws IOException {
+        writeData(customers, "Customers.txt");
+        writeData(checks, "Checks.txt");
+        writeData(checkings, "Checkings.txt");
+        writeData(savings, "Savings.txt");
+        writeData(loans, "Loans.txt");
+    }//end of database
 
     public static void readCustomer(ArrayList<User> list) throws FileNotFoundException {
         File file = new File("src/Customers.txt");
