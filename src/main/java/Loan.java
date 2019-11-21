@@ -121,6 +121,7 @@ public class Loan extends Account{
     }
 
     //getter and setter
+    public char getType() {return type;}
     public double getInitialBalance() {return initialBalance;}
     public double getInterestRate() {return interestRate;}
     public void setInterestRate(double interestRate) {this.interestRate = interestRate;}

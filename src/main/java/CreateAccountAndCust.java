@@ -12,18 +12,28 @@ public class CreateAccountAndCust {
     private JTextField textField5;
     private JTextField textField6;
     private JTextField textField7;
-    private JComboBox comboBox1;
+    private JComboBox accountType;
     private JTextField textField8;
     private JTextField textField9;
     private JButton backButton;
     private JButton createButton;
     private JPanel panel1;
+    private JTextField backupAccount;
+    private JTextField ATM;
     private JMenuItem logout;
     private JMenuBar menu;
     public CreateAccountAndCust() {
         menu = new JMenuBar();
         logout = new JMenuItem("Logout");
         menu.add(logout);
+        accountType.addItem("Standard Checking");
+        accountType.addItem("Premium Checking");
+        accountType.addItem("Savings");
+        accountType.addItem("CD");
+        accountType.addItem("Short Term Loan");
+        accountType.addItem("Long Term Loan");
+        accountType.addItem("Credit Card");
+
         final JFrame createAcctCust = new JFrame("PitA Bank");
         createAcctCust.setContentPane(panel1);
         createAcctCust.setPreferredSize(new Dimension(800, 600));

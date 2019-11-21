@@ -19,6 +19,7 @@ public class TellerScreen {
     private JTextArea TransferAmount;
     private JTable accountInfo;
     private JButton closeAccountButton;
+    private JTable transactions;
     private JMenuItem logout;
     private JMenuBar menu;
 
@@ -47,6 +48,15 @@ public class TellerScreen {
                         },
                 new String []{
                         "Account Type","Account ID", "Balance"
+                }
+                ) {public boolean isCellEditable(int row, int column){return false;}}
+        );
+        transactions.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [][] {
+                        {null,null,null,null}
+                        },
+                new String []{
+                        "Date", "Processed","Amount", "Desc"
                 }
                 ) {public boolean isCellEditable(int row, int column){return false;}}
         );

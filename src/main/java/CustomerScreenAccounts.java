@@ -20,7 +20,7 @@ public class CustomerScreenAccounts {
     private JMenuItem logout;
     private JMenuBar menu;
 
-    public CustomerScreenAccounts() {
+    public CustomerScreenAccounts(String ssn) {
         menu = new JMenuBar();
         logout = new JMenuItem("Logout");
         menu.add(logout);
@@ -31,6 +31,39 @@ public class CustomerScreenAccounts {
         cusScreen.pack();
         cusScreen.setVisible(true);
         cusScreen.setJMenuBar(menu);
+        for (int i = 0; i < Main.checkings.size(); i++){
+            Checking temp = Main.checkings.get(i);
+            if (temp.getCustID().equals(ssn)){
+                Accounts.addItem("Checking #" + temp.getAccountID());
+
+            }
+        }
+        for (int i = 0; i < Main.savings.size(); i++){
+            Saving temp = Main.savings.get(i);
+            if (temp.getCustID().equals(ssn)){
+                Accounts.addItem("Savings #" + temp.getAccountID());
+
+            }
+        }
+        for (int i = 0; i < Main.loans.size(); i++){
+            Loan temp = Main.loans.get(i);
+            if (temp.getCustID().equals(ssn)){
+                String type = null;
+                switch (temp.getType()){
+                    case 'c':
+                        type = "Credit Card";
+                        break;
+                    case 's':
+                        type = "Short Loan";
+                        break;
+                    case'l':
+                        type = "Long Loan";
+                        break;
+                }
+                Accounts.addItem(type + " #" + temp.getAccountID());
+
+            }
+        }
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

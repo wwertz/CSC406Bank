@@ -12,7 +12,7 @@ public class ATMScreen {
     private JMenuItem logout;
     private JMenuBar menu;
 
-    public ATMScreen() {
+    public ATMScreen(String ssn) {
         menu = new JMenuBar();
         logout = new JMenuItem("Logout");
         menu.add(logout);
@@ -44,6 +44,12 @@ public class ATMScreen {
             public void actionPerformed(ActionEvent e) {
                 ATMScreen.dispose();
                 LoginScreen loginScreen = new LoginScreen();
+            }
+        });
+        withdrawButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
             }
         });
     }

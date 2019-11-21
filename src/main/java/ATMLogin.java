@@ -9,6 +9,7 @@ public class ATMLogin {
     private JButton loginButton;
     private JButton cancelButton;
     private JPanel panel1;
+    private JLabel ErrorMessage;
 
     public ATMLogin() {
         final JFrame ATMLogin = new JFrame("PitA Bank");
@@ -20,8 +21,9 @@ public class ATMLogin {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String ssn = null;
                 ATMLogin.dispose();
-                ATMScreen ATM = new ATMScreen();
+                ATMScreen ATM = new ATMScreen(ssn);
             }
         });
         cancelButton.addActionListener(new ActionListener() {

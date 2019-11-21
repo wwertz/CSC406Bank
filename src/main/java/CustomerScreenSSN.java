@@ -16,6 +16,7 @@ public class CustomerScreenSSN {
         cusScreen.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         cusScreen.pack();
         cusScreen.setVisible(true);
+
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -26,8 +27,9 @@ public class CustomerScreenSSN {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String ssn = SSNfield.getText();
                 cusScreen.dispose();
-                CustomerScreenAccounts accounts = new CustomerScreenAccounts();
+                CustomerScreenAccounts accounts = new CustomerScreenAccounts(ssn);
             }
         });
     }

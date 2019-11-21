@@ -10,7 +10,7 @@
       <scrollpane id="2604">
         <constraints>
           <grid row="5" column="0" row-span="1" col-span="6" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="1.0" weighty="1.0"/>
+          <gridbag weightx="1.0" weighty="0.1"/>
         </constraints>
         <properties/>
         <border type="none"/>
@@ -159,6 +159,20 @@
           <text value="Close Account"/>
         </properties>
       </component>
+      <scrollpane id="c51f7">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="6" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="1.0"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="1b5f0" class="javax.swing.JTable" binding="transactions">
+            <constraints/>
+            <properties/>
+          </component>
+        </children>
+      </scrollpane>
     </children>
   </grid>
 </form>

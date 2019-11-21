@@ -8,12 +8,14 @@ public class InterestScreen {
     private JButton shortLoanButton;
     private JButton longLoanButton;
     private JButton CDsButton;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JTextField textField4;
+    private JTextField savingsField;
+    private JTextField CDField;
+    private JTextField shortLoanField;
+    private JTextField longLoanField;
     private JButton backButton;
     private JPanel panel1;
+    private JButton creditCardButton;
+    private JTextField creditCardField;
     private JMenuItem logout;
     private JMenuBar menu;
 
