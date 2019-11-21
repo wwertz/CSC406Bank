@@ -8,15 +8,14 @@ public class Checking extends  Account{
 
     //********************************still needs interest****************************************8
 
-    protected char type; //t = TMB and g = Gold/Diamond
     protected boolean hasBackup;
     protected String backupID; //saving account ID
     protected LocalDate dateOpened;
     protected int overdrafts;
 
     //constructor
-    public Checking(String custID, String accountID, double balance, String dateOpened, boolean hasBackup, String backupID, int overdrafts) {
-        super(accountID, custID, balance);
+    public Checking(String custID, String accountID, double balance, String dateOpened, boolean hasBackup, String backupID, int overdrafts, String type) {
+        super(accountID, custID, balance, type);
         if(dateOpened.length()>4)
             this.dateOpened = LocalDate.of(Integer.parseInt(dateOpened.substring(6)),
                     Integer.parseInt(dateOpened.substring(0,2)), Integer.parseInt(dateOpened.substring(3,5)));
@@ -32,7 +31,7 @@ public class Checking extends  Account{
         checkType();
 
         //check for fees
-        if(type=='t')
+        if(type.equals("t"))
             balance -= .50;
     }
 
@@ -49,18 +48,18 @@ public class Checking extends  Account{
         }
 
         //check for fees
-        if(type=='t')
+        if(type.equals("t"))
             balance -= .50;
 
         return balance;
     }
 
     //check type
-    public char checkType(){
+    public String checkType(){
         if(balance>=1000){
-            return type = 'g';
+            return type = "g";
         }else{
-            return type = 't';
+            return type = "t";
         }
     }
 
@@ -81,11 +80,10 @@ public class Checking extends  Account{
                         date + ',' +
                         hasBackup + ',' +
                         backupID + ',' +
-                        overdrafts;
+                        overdrafts + ',' +
+                        type;
     }
 
-    public char getType() {return type;}
-    public void setType(char type) {this.type = type;}
     public boolean isHasBackup() {return hasBackup;}
     public void setHasBackup(boolean hasBackup) {this.hasBackup = hasBackup;}
 }//end of Checking

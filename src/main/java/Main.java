@@ -87,7 +87,7 @@ public class Main {
         Scanner input = new Scanner(file);
         while(input.hasNextLine()){
             String[] field = input.nextLine().split(",");
-            list.add(new Checking(field[0], field[1], Double.parseDouble(field[2]), field[3], Boolean.valueOf(field[4]), field[5], Integer.parseInt(field[6])));
+            list.add(new Checking(field[0], field[1], Double.parseDouble(field[2]), field[3], Boolean.valueOf(field[4]), field[5], Integer.parseInt(field[6]), field[7]));
         }
         System.out.println("read checking accounts");
     }//end of readChecking
@@ -98,7 +98,7 @@ public class Main {
         while(input.hasNextLine()){
             String[] field = input.nextLine().split(",");
             list.add(new Saving(field[0], field[1], Double.parseDouble(field[2]), Double.parseDouble(field[3]),field[4],
-                    Boolean.valueOf(field[5]),field[6]));
+                    Boolean.valueOf(field[5]),field[6],field[7]));
         }
         System.out.println("read savings account");
     }//end of readSaving
@@ -109,7 +109,7 @@ public class Main {
         while(input.hasNextLine()){
             String[] field = input.nextLine().split(",");
             list.add(new Loan(field[0], field[1], Double.parseDouble(field[2]), Double.parseDouble(field[3]), Double.parseDouble(field[4]),
-                    field[5], field[6], Double.parseDouble(field[7]), field[8], Boolean.valueOf(field[9]), (field[10].charAt(0))));
+                    field[5], field[6], Double.parseDouble(field[7]), field[8], Boolean.valueOf(field[9]), field[10]));
         }
         System.out.println("read loans accounts");
     }//end of readLoan
@@ -130,8 +130,8 @@ public class Main {
             if(list.get(i).getCheckNumber().equals(checkNumber)){
                 if(list.get(i).isProcessed()==false){
                     System.out.println(list.get(i) + "Is removed and wont be processed");
-                    list.remove(i);
                     checking.get(Integer.parseInt(list.get(i).getCheckingAccID())).withdrawal(15.00);
+                    list.remove(i);
                 }else{
                     System.out.println(list.get(i) + "Was already processed");
                 }

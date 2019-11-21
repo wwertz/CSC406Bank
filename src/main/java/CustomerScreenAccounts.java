@@ -50,13 +50,13 @@ public class CustomerScreenAccounts {
             if (temp.getCustID().equals(ssn)){
                 String type = null;
                 switch (temp.getType()){
-                    case 'c':
+                    case "c":
                         type = "Credit Card";
                         break;
-                    case 's':
+                    case "s":
                         type = "Short Loan";
                         break;
-                    case'l':
+                    case"l":
                         type = "Long Loan";
                         break;
                 }
