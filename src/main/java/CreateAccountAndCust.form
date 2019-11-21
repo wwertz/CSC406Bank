@@ -16,7 +16,7 @@
           <text value="Lookup SSN"/>
         </properties>
       </component>
-      <component id="36b04" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+      <component id="36b04" class="javax.swing.JTextField" binding="ssnField">
         <constraints>
           <grid row="0" column="5" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -43,9 +43,9 @@
           <text value="City"/>
         </properties>
       </component>
-      <component id="71421" class="javax.swing.JTextField" binding="textField7" default-binding="true">
+      <component id="71421" class="javax.swing.JTextField" binding="zipField">
         <constraints>
-          <grid row="3" column="8" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="3" column="8" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
           <gridbag weightx="0.7" weighty="0.1"/>
@@ -77,7 +77,7 @@
           <text value="Account #"/>
         </properties>
       </component>
-      <component id="896e1" class="javax.swing.JTextField" binding="textField8" default-binding="true">
+      <component id="896e1" class="javax.swing.JTextField" binding="acctNumField">
         <constraints>
           <grid row="4" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -95,9 +95,9 @@
           <text value="Balance"/>
         </properties>
       </component>
-      <component id="17721" class="javax.swing.JTextField" binding="textField9" default-binding="true">
+      <component id="17721" class="javax.swing.JTextField" binding="balanceField">
         <constraints>
-          <grid row="4" column="8" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="4" column="8" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
           <gridbag weightx="0.7" weighty="0.1"/>
@@ -122,7 +122,7 @@
           <text value="Create"/>
         </properties>
       </component>
-      <component id="8968a" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+      <component id="8968a" class="javax.swing.JTextField" binding="lastNameField">
         <constraints>
           <grid row="1" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -131,7 +131,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="16c9e" class="javax.swing.JTextField" binding="textField6" default-binding="true">
+      <component id="16c9e" class="javax.swing.JTextField" binding="statetField">
         <constraints>
           <grid row="3" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -158,9 +158,9 @@
           <text value="Zip"/>
         </properties>
       </component>
-      <component id="9f1fd" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+      <component id="9f1fd" class="javax.swing.JTextField" binding="firstNameField">
         <constraints>
-          <grid row="1" column="7" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="1" column="7" row-span="1" col-span="4" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
           <gridbag weightx="0.1" weighty="0.1"/>
@@ -176,7 +176,7 @@
           <text value="First Name"/>
         </properties>
       </component>
-      <component id="dac0" class="javax.swing.JTextField" binding="textField5" default-binding="true">
+      <component id="dac0" class="javax.swing.JTextField" binding="cityField">
         <constraints>
           <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -187,7 +187,7 @@
       </component>
       <hspacer id="f832f">
         <constraints>
-          <grid row="1" column="10" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="11" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.1" weighty="0.0"/>
         </constraints>
       </hspacer>
@@ -200,7 +200,7 @@
           <text value="Address"/>
         </properties>
       </component>
-      <component id="6c4c0" class="javax.swing.JTextField" binding="textField4" default-binding="true">
+      <component id="6c4c0" class="javax.swing.JTextField" binding="addressField">
         <constraints>
           <grid row="2" column="4" row-span="1" col-span="4" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -208,15 +208,6 @@
           <gridbag weightx="0.0" weighty="0.1"/>
         </constraints>
         <properties/>
-      </component>
-      <component id="1f347" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="5" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <text value="ATM"/>
-        </properties>
       </component>
       <component id="5b658" class="javax.swing.JLabel">
         <constraints>
@@ -236,9 +227,36 @@
         </constraints>
         <properties/>
       </component>
+      <component id="1f347" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="5" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="ATM"/>
+        </properties>
+      </component>
       <component id="7a34b" class="javax.swing.JTextField" binding="ATM">
         <constraints>
-          <grid row="5" column="7" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="5" column="6" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="b89e2" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="5" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="PIN"/>
+        </properties>
+      </component>
+      <component id="74d95" class="javax.swing.JTextField" binding="pinField">
+        <constraints>
+          <grid row="5" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
           <gridbag weightx="0.0" weighty="0.0"/>

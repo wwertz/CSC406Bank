@@ -85,4 +85,7 @@ public class Checking extends  Account{
 
     public boolean isHasBackup() {return hasBackup;}
     public void setHasBackup(boolean hasBackup) {this.hasBackup = hasBackup;}
+    public void setBackupID(String backupID) {
+        this.backupID = backupID;
+    }
 }//end of Checking

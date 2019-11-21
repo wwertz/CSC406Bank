@@ -20,6 +20,11 @@ public class Main {
     public static ArrayList<Checking> checkings = new ArrayList<>();
     public static ArrayList<Saving> savings = new ArrayList<>();
     public static ArrayList<Loan> loans = new ArrayList<>();
+    public static double savingsInterest = 0.1;
+    public static double stlInterest = 0.1;
+    public static double ltlInterest = 0.1;
+    public static double ccInterest = 0.1;
+    public static double cdInterest = 0.1;
 
     public static void main(String[] args) throws IOException {
 
