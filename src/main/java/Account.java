@@ -28,4 +28,7 @@ public abstract class Account {
     public void setDateOpened(LocalDate dateOpened) {this.dateOpened = dateOpened;}
     public String getType() {return type;}
     public void setType(String type) {this.type = type;}
+    public abstract void deposit(double amount);
+    public abstract void withdrawal(double amount);
+
 }//end of Account

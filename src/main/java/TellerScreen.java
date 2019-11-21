@@ -78,15 +78,81 @@ public class TellerScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String id = Accounts.getSelectedItem().toString();
+                transactionModel.setRowCount(0);
                 for (int i = 0; i < accountList.size(); i++){
                     if(accountList.get(i).getAccountID().equals(id)) {
                         current = accountList.get(i);
                         if(accountModel.getRowCount() > 0) {
                             accountModel.removeRow(0);
                         }
-                        accountModel.addRow(new Object[]{"Checking", current.getAccountID(), current.getBalance()});
+                        accountModel.addRow(new Object[]{current.getType(), current.getAccountID(), current.getBalance()});
+                        if(current.getType().equals("Gold Checking") || current.getType().equals("TMB Checking")){
+                            for(int j = 0; j < Main.checks.size(); j++){
+                                if(Main.checks.get(j).getCheckingAccID().equals(current.accountID)){
+                                    Check temp = Main.checks.get(j);
+                                    transactionModel.addRow(new Object[]{temp.getDate(), temp.isProcessed(), temp.getAmount(), null});
+                                }//add check to table
+                            }//search checks table for checks from current account
+                        }//extra steps for checking accounts
+                    }//add account info to tables
+                }//search customer accounts for selected account
+            }//selectButton action
+        });
+
+        creditButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String id = Accounts.getSelectedItem().toString();
+                for (int i = 0; i < accountList.size(); i++) {
+                    if (accountList.get(i).getAccountID().equals(id)) {
+                        current = accountList.get(i);
                     }
+                }//get the selected account
+                if(creditAmount.getText()!= null) {
+                    double amount = Double.parseDouble(creditAmount.getText());
+                    current.deposit(amount);
+                    accountModel.setValueAt(current.getBalance(), 0, 2);
                 }
+            }
+        });
+        debitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String id = Accounts.getSelectedItem().toString();
+                for (int i = 0; i < accountList.size(); i++) {
+                    if (accountList.get(i).getAccountID().equals(id)) {
+                        current = accountList.get(i);
+                    }
+                }//get the selected account
+                if(debitAmount.getText() != null) {
+                    double amount = Double.parseDouble(debitAmount.getText());
+                    current.withdrawal(amount);
+                    accountModel.setValueAt(current.getBalance(), 0, 2);
+                }
+            }
+        });
+        transferButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (TransferAmount.getText() != null) {
+                    double amount = Double.parseDouble(TransferAmount.getText());
+                    Account to = null;
+                    Account from = null;
+                    String fromID = fromAccount.getSelectedItem().toString();
+                    String toID = toAccount.getSelectedItem().toString();
+
+                    for (int i = 0; i < accountList.size(); i++) {
+                        if (accountList.get(i).getAccountID().equals(fromID)) {
+                            from = accountList.get(i);
+                        }
+                        if (accountList.get(i).getAccountID().equals(toID)) {
+                            to = accountList.get(i);
+                        }
+                    }//get the selected account
+                    to.deposit(amount);
+                    from.withdrawal(amount);
+                }
+                accountModel.setValueAt(current.getBalance(), 0, 2);
             }
         });
         backButton.addActionListener(new ActionListener() {

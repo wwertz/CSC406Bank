@@ -33,13 +33,13 @@ public class Saving extends  Account{
     //withdrawal
     public void withdrawal(double amount){
         //check amount vs balance
-        if(type.equals("s")){
+        if(type.equals("Savings")){
             if(amount<=balance)
                 balance -= amount;
             else if(amount>balance){
                 System.out.println("not enough cash");
             }
-        }else if(type.equals("c")){
+        }else if(type.equals("CD")){
             //is CD and before mature date
             if(LocalDate.now().isBefore(CDdate)){
                 balance -= amount;

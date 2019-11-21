@@ -37,10 +37,11 @@ public class Loan extends Account{
     }
 
     //make a payment
-    public void payment(double amount){
+    @Override
+    public void deposit(double amount){
         //check to see if late
 
-        if (type.equals("l") || type.equals("s")) {             //loans
+        if (type.equals("Long Term Loan") || type.equals("Short Term Loan")) {  //loans
             if(LocalDate.now().isAfter(dueDate)){               //late
                 flag = true;
                 balance += balance*interestRate/100;
@@ -76,7 +77,11 @@ public class Loan extends Account{
             }
         }
     }
+    @Override
+    public void withdrawal(double amount) {
 
+
+    }
     @Override
     public String toString() {
         //convert dates back into strings formatted in the database
@@ -132,4 +137,6 @@ public class Loan extends Account{
     public void setLastPaymentDate(LocalDate lastPaymentDate) {this.lastPaymentDate = lastPaymentDate;}
     public boolean isFlag() {return flag;}
     public void setFlag(boolean flag) {this.flag = flag;}
+
+
 }//end of loan

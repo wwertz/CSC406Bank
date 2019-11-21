@@ -36,7 +36,7 @@ public class Checking extends  Account{
     }
 
     //withdrawal
-    public double withdrawal(double amount){
+    public void withdrawal(double amount){
         //check amount vs balance
         if(amount>=balance){
             System.out.println("not enough in balance, checking for backup");
@@ -48,18 +48,17 @@ public class Checking extends  Account{
         }
 
         //check for fees
-        if(type.equals("t"))
+        if(type.equals("TMB Checking"))
             balance -= .50;
 
-        return balance;
     }
 
     //check type
     public String checkType(){
         if(balance>=1000){
-            return type = "g";
+            return type = "Gold Checking";
         }else{
-            return type = "t";
+            return type = "TMB Checking";
         }
     }
 
