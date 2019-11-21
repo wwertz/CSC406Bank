@@ -10,10 +10,10 @@ package Users;
 
 public class Customer extends User {
 
-    private String ssn, firstName, lastName, address, city, state, zipcode, atmCard;
+    private String ssn, firstName, lastName, address, city, state, zipcode, atmCard, pin;
 
     public Customer(String ssn, String firstName, String lastName, String address, String city, String state,
-             String zipcode, String atmCard) {
+             String zipcode, String atmCard, String pin) {
 
         super(ssn, firstName, lastName);
         this.address = address;
@@ -21,6 +21,7 @@ public class Customer extends User {
         this.state = state;
         this.zipcode = zipcode;
         this.atmCard = atmCard;
+        this.pin = pin;
 
     }
 
@@ -34,7 +35,8 @@ public class Customer extends User {
                 city + "," +
                 state + "," +
                 zipcode + "," +
-                atmCard;
+                atmCard + "," +
+                pin;
     }
 
     //getters
@@ -43,10 +45,6 @@ public class Customer extends User {
     public String getState() {return state;}
     public String getZipcode() {return zipcode;}
     public String getAtmCard() {return atmCard;}
+    public String getPin() {return pin;}
+    public void setPin(String pin) {this.pin = pin;}
 }
-//CD's
-//CheckingAccount
-//Savings accounts
-//CreditCard
-//DebitAccount
-//Loans
