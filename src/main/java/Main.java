@@ -129,8 +129,12 @@ public class Main {
         for(int i=0; i<list.size(); i++){
             if(list.get(i).getCheckNumber().equals(checkNumber)){
                 if(list.get(i).isProcessed()==false){
-                    System.out.println(list.get(i) + "Is removed and wont be processed");
-                    checking.get(Integer.parseInt(list.get(i).getCheckingAccID())).withdrawal(15.00);
+                    System.out.println(list.get(i).getCheckNumber() + " Is removed and wont be processed");
+                    for(int j=0; j<checking.size(); j++){
+                        //find the right account to charge
+                        if(list.get(i).getCheckingAccID().equals(checking.get(j).getAccountID()))
+                            checking.get(j).withdrawal(15.00);
+                    }//end of for j
                     list.remove(i);
                 }else{
                     System.out.println(list.get(i) + "Was already processed");
