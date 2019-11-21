@@ -7,8 +7,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Loan extends Account{
-    //l=long, s=short and c=credit card
-    protected char type;
+
     protected double initialBalance;
     protected double interestRate;
     protected double amountDue;
@@ -20,8 +19,8 @@ public class Loan extends Account{
 
     //constructor
     public Loan(String custID, String accountID, double initialBalance, double balance, double interestRate,
-                String dueDate, String notifiedDate, double amountDue, String lastPaymentDate, boolean flag, char type) {
-        super(accountID, custID, balance);
+                String dueDate, String notifiedDate, double amountDue, String lastPaymentDate, boolean flag, String type) {
+        super(accountID, custID, balance, type);
         this.initialBalance = initialBalance;
         this.interestRate = interestRate;
         this.amountDue = amountDue;
@@ -35,14 +34,13 @@ public class Loan extends Account{
             this.lastPaymentDate = LocalDate.of(Integer.parseInt(lastPaymentDate.substring(6)),
                     Integer.parseInt(lastPaymentDate.substring(0,2)), Integer.parseInt(lastPaymentDate.substring(3,5)));
         this.flag = flag;
-        this.type = type;
     }
 
     //make a payment
     public void payment(double amount){
         //check to see if late
 
-        if (type=='l' || type=='s') {                           //loans
+        if (type.equals("l") || type.equals("s")) {             //loans
             if(LocalDate.now().isAfter(dueDate)){               //late
                 flag = true;
                 balance += balance*interestRate/100;
@@ -121,7 +119,6 @@ public class Loan extends Account{
     }
 
     //getter and setter
-    public char getType() {return type;}
     public double getInitialBalance() {return initialBalance;}
     public double getInterestRate() {return interestRate;}
     public void setInterestRate(double interestRate) {this.interestRate = interestRate;}

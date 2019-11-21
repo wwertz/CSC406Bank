@@ -18,14 +18,30 @@ public class ATMLogin {
         ATMLogin.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         ATMLogin.pack();
         ATMLogin.setVisible(true);
+
+        ErrorMessage.setText("Enter ATM card and PIN");
+
+        //login to account
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String ssn = null;
-                ATMLogin.dispose();
-                ATMScreen ATM = new ATMScreen(ssn);
+                String card = cardNum.getText();
+                String pin = PIN.getText();
+                for(int i=0; i<Main.customers.size(); i++){
+                    if(Main.customers.get(i).getAtmCard().equals(card) ){
+                        String ssn = Main.customers.get(i).getSsn();
+                        ATMLogin.dispose();
+                        ATMScreen ATM = new ATMScreen(ssn);
+                    }else{
+                        ErrorMessage.setText("Invalid account to PIN. Please retry.");
+                        ErrorMessage.setForeground(Color.red);
+                    }
+                }//end of for
             }
         });
+
+
+        //go back
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

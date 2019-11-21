@@ -7,22 +7,17 @@ import java.time.*;
 
 public class Saving extends  Account{
 
-    protected char type; // s = simple and c = CD
     protected boolean isCD;
     protected double interestRate;
     protected LocalDate CDdate; //date CD matures
     protected LocalDate dateOpened;
 
 
-    public Saving( String custID, String accountID, double balance, double interestRate, String dateOpened, boolean isCD, String CDdate) {
-        super(accountID, custID, balance);
+    public Saving( String custID, String accountID, double balance, double interestRate, String dateOpened, boolean isCD, String CDdate, String type) {
+        super(accountID, custID, balance, type);
         if(dateOpened.length()>4)
             this.dateOpened = LocalDate.of(Integer.parseInt(dateOpened.substring(6)),
                     Integer.parseInt(dateOpened.substring(0,2)), Integer.parseInt(dateOpened.substring(3,5)));
-        if(isCD)
-            type = 'c';
-        else
-            type = 's';
         if(CDdate.length()>4)
             this.CDdate = LocalDate.of(Integer.parseInt(CDdate.substring(6)),
                     Integer.parseInt(CDdate.substring(0,2)), Integer.parseInt(CDdate.substring(3,5)));
@@ -38,13 +33,13 @@ public class Saving extends  Account{
     //withdrawal
     public void withdrawal(double amount){
         //check amount vs balance
-        if(type=='s'){
+        if(type.equals("s")){
             if(amount<=balance)
                 balance -= amount;
             else if(amount>balance){
                 System.out.println("not enough cash");
             }
-        }else if(type=='c'){
+        }else if(type.equals("c")){
             //is CD and before mature date
             if(LocalDate.now().isBefore(CDdate)){
                 balance -= amount;
@@ -78,12 +73,11 @@ public class Saving extends  Account{
                         interestRate + ',' +
                         date + ',' +
                         isCD + ',' +
-                        cDate;
+                        cDate + ',' +
+                        type;
     }
 
     //getters and setters
-    public char getType() {return type;}
-    public void setType(char type) {this.type = type;}
     public LocalDate getCDdate() {return CDdate;}
     public void setCDdate(LocalDate CDdate) {this.CDdate = CDdate;}
     public double getInterestRate() {return interestRate;}
