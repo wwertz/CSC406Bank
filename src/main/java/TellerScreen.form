@@ -75,7 +75,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="34f10" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+      <component id="34f10" class="javax.swing.JComboBox" binding="Accounts">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="5" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
           <gridbag weightx="1.0" weighty="0.2"/>
@@ -100,7 +100,7 @@
           <text value="Transfer"/>
         </properties>
       </component>
-      <component id="b1b71" class="javax.swing.JComboBox" binding="comboBox2" default-binding="true">
+      <component id="b1b71" class="javax.swing.JComboBox" binding="fromAccount">
         <constraints>
           <grid row="4" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
