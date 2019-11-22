@@ -17,7 +17,6 @@ public class CustomerScreenAccounts {
     private JTable accountInfo;
     private JTextField TransferAmount;
     private JButton cancelCheckButton;
-    private JTextField checkNum;
     private JTable transactions;
     private JButton SelectButton;
     private JMenuItem logout;
@@ -68,6 +67,7 @@ public class CustomerScreenAccounts {
         accountInfo.setModel(accountModel);
         DefaultTableModel transactionModel = new DefaultTableModel();
         transactionModel.addColumn("Date");
+        transactionModel.addColumn("#");
         transactionModel.addColumn("Processed");
         transactionModel.addColumn("Amount");
         transactionModel.addColumn("Description");
@@ -89,7 +89,8 @@ public class CustomerScreenAccounts {
                             for(int j = 0; j < Main.checks.size(); j++){
                                 if(Main.checks.get(j).getCheckingAccID().equals(current.accountID)){
                                     Check temp = Main.checks.get(j);
-                                    transactionModel.addRow(new Object[]{temp.getDate(), temp.isProcessed(), temp.getAmount(), null});
+                                    transactionModel.addRow(new Object[]{temp.getDate(), temp.getCheckNumber(),
+                                            temp.isProcessed(), temp.getAmount(), null});
                                 }//add check to table
                             }//search checks table for checks from current account
                         }//extra steps for checking accounts
@@ -121,6 +122,24 @@ public class CustomerScreenAccounts {
                 accountModel.setValueAt(current.getBalance(), 0, 2);
             }
         });
+        cancelCheckButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Check toCancel = new Check(null, null, null, 0.0, false);
+                int row = transactions.getSelectedRow();
+                String num = transactions.getValueAt(row, 1).toString();
+                for (int i = 0; i < Main.checks.size(); i++){
+                    if (Main.checks.get(i).getCheckNumber().equals(num)){
+                        toCancel = Main.checks.get(i);
+                        toCancel.setProcessed(false);
+                        current.withdrawal(15);
+                        accountInfo.setValueAt(current.balance, 0, 2);
+                        transactions.setValueAt(toCancel.isProcessed(), row, 2);
+                    }
+                }
+
+            }
+        });
         logout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -135,5 +154,6 @@ public class CustomerScreenAccounts {
                 CustomerScreenSSN screenSSN = new CustomerScreenSSN();
             }
         });
+
     }
 }

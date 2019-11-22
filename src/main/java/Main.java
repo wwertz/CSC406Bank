@@ -29,6 +29,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         //read data from databases
+        System.out.println(LocalDate.now().toString());
         readCustomer(customers);
         readChecks(checks);
         readChecking(checkings);
