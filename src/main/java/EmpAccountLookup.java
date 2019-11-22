@@ -33,7 +33,7 @@ public class EmpAccountLookup {
                     for (int i = 0; i < Main.customers.size(); i++) {
                         if (Main.customers.get(i).getSsn().equals(ssn)) {
                             lookupScreen.dispose();
-                            TellerScreen tellerScreen = new TellerScreen(ssn);
+                            TellerScreen tellerScreen = new TellerScreen(ssn, null);
                         }
                     }
                     ErrorMessage.setText("Customer SSN Not Found");
@@ -43,19 +43,22 @@ public class EmpAccountLookup {
                     for (int i = 0; i < Main.checkings.size(); i++) {
                         if (Main.checkings.get(i).getAccountID().equals(acct)) {
                             lookupScreen.dispose();
-                            TellerScreen tellerScreen = new TellerScreen(Main.checkings.get(i).getCustID());
+                            TellerScreen tellerScreen = new TellerScreen(Main.checkings.get(i).getCustID(),
+                                    Main.checkings.get(i).getAccountID());
                         }
                     }
                     for (int i = 0; i < Main.savings.size(); i++) {
                         if (Main.savings.get(i).getAccountID().equals(acct)) {
                             lookupScreen.dispose();
-                            TellerScreen tellerScreen = new TellerScreen(Main.savings.get(i).getCustID());
+                            TellerScreen tellerScreen = new TellerScreen(Main.savings.get(i).getCustID(),
+                                    Main.savings.get(i).getAccountID());
                         }
                     }
                     for (int i = 0; i < Main.loans.size(); i++) {
                         if (Main.loans.get(i).getAccountID().equals(acct)) {
                             lookupScreen.dispose();
-                            TellerScreen tellerScreen = new TellerScreen(Main.loans.get(i).getCustID());
+                            TellerScreen tellerScreen = new TellerScreen(Main.loans.get(i).getCustID(),
+                                    Main.loans.get(i).getAccountID());
                         }
                     }
                 }

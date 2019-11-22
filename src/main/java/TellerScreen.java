@@ -25,7 +25,7 @@ public class TellerScreen {
     private JMenuBar menu;
     private ArrayList<Account> accountList = new ArrayList<>();
     private Account current = null;
-    public TellerScreen(String ssn) {
+    public TellerScreen(String ssn, String id) {
         menu = new JMenuBar();
         logout = new JMenuItem("Logout");
         menu.add(logout);
@@ -62,6 +62,9 @@ public class TellerScreen {
                 toAccount.addItem(temp.getAccountID());
                 accountList.add(temp);
             }
+        }
+        if (id.equals(null) == false){
+            Accounts.setSelectedItem(id);
         }
         DefaultTableModel accountModel = new DefaultTableModel();
         accountModel.addColumn("Account Type");
@@ -155,6 +158,58 @@ public class TellerScreen {
                 accountModel.setValueAt(current.getBalance(), 0, 2);
             }
         });
+        closeAccountButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int response = 0;
+                if (current.type.equals("TMB Checking")||current.type.equals("Gold Checking")||current.type.equals("Savings")){
+                    response = JOptionPane.showConfirmDialog(null, "Are you sure you want to close this account?" +
+                                    " We will owe them $" + current.balance,
+                            "Confirm",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                }else if (current.type.equals("CD")){
+                    double initBal = 0.0;
+                    for (int i = 0; i < Main.savings.size(); i++){
+                        if (Main.savings.get(i).accountID.equals(current.accountID)){
+                            initBal = Main.savings.get(i).getInitBal();
+                        }
+                    }
+                    response = JOptionPane.showConfirmDialog(null, "Are you sure you want to close this account?" +
+                                    " We will owe them $" + (((current.balance - initBal)*.8)+current.balance),
+                            "Confirm",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                }else{
+                    response = JOptionPane.showConfirmDialog(null, "Are you sure you want to close this account?" +
+                                    " They will owe us $" + current.balance,
+                            "Confirm",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                }
+
+                if(response == JOptionPane.YES_OPTION){
+                    for(int i = 0; i< Main.checkings.size(); i++){
+                        if (Main.checkings.get(i).getAccountID().equals(current.accountID)){
+                            Main.checkings.remove(i);
+                        }
+                    }
+                    for(int i = 0; i< Main.savings.size(); i++){
+                        if (Main.savings.get(i).getAccountID().equals(current.accountID)){
+                            Main.savings.remove(i);
+                        }
+                    }
+                    for(int i = 0; i< Main.loans.size(); i++){
+                        if (Main.loans.get(i).getAccountID().equals(current.accountID)){
+                            Main.loans.remove(i);
+                        }
+                    }
+                    int j = accountList.indexOf(current);
+                    accountList.remove(j);
+                    fromAccount.removeItem(current.accountID);
+                    toAccount.removeItem(current.accountID);
+                    Accounts.removeItem(current.accountID);
+                    accountModel.removeRow(0);
+                    for(int i = 0; i < transactionModel.getRowCount(); i++){
+                        transactionModel.removeRow(i);
+                    }
+                }
+            }
+        });
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -169,5 +224,6 @@ public class TellerScreen {
                 LoginScreen loginScreen = new LoginScreen();
             }
         });
+
     }
 }

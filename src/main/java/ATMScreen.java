@@ -32,8 +32,8 @@ public class ATMScreen {
 
         //get checking info
         for (int i = 0; i < Main.checkings.size(); i++){
-            temp = Main.checkings.get(i);
-            if (temp.getCustID().equals(ssn)){
+            if(ssn.equals(Main.checkings.get(i).getCustID())) {
+                temp = Main.checkings.get(i);
                 type = temp.getType();
                 accountType = temp.getAccountID();
                 balance = temp.getBalance();
@@ -74,8 +74,7 @@ public class ATMScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 temp.withdrawal(Double.parseDouble(amount.getText()));
-                ATMScreen.dispose();
-                ATMLogin ATM = new ATMLogin();
+                accountInfo.setValueAt(temp.getBalance(), 0, 2);
             }
         });
     }

@@ -102,8 +102,8 @@ public class Main {
         Scanner input = new Scanner(file);
         while(input.hasNextLine()){
             String[] field = input.nextLine().split(",");
-            list.add(new Saving(field[0], field[1], Double.parseDouble(field[2]), Double.parseDouble(field[3]),field[4],
-                    Boolean.valueOf(field[5]),field[6],field[7]));
+            list.add(new Saving(field[0], field[1],Double.parseDouble(field[2]), Double.parseDouble(field[3]),
+                    Double.parseDouble(field[4]),field[5],Boolean.valueOf(field[6]),field[7],field[8]));
         }
         System.out.println("read savings account");
     }//end of readSaving
