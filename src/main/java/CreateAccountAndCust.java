@@ -99,7 +99,8 @@ public class CreateAccountAndCust {
                         }
                     }
                    Saving account = new Saving(temp.getSsn(), acctNumField.getText(), Double.parseDouble(balanceField.getText()),
-                            Main.savingsInterest, LocalDate.now().toString(), false, null, "Saving");
+                           Double.parseDouble(balanceField.getText()), Main.savingsInterest, LocalDate.now().toString(),
+                           false, null, "Saving");
                     Main.savings.add(account);
                 }
                 if(accountType.getSelectedItem().equals("CD")){
@@ -108,7 +109,8 @@ public class CreateAccountAndCust {
                     }
                     LocalDate cdDate = LocalDate.now().plusYears(3);
                     Saving account = new Saving(temp.getSsn(), acctNumField.getText(), Double.parseDouble(balanceField.getText()),
-                            Main.cdInterest, LocalDate.now().toString(), true, cdDate.toString(), "CD");
+                            Double.parseDouble(balanceField.getText()),Main.cdInterest, LocalDate.now().toString(),
+                            true, cdDate.toString(), "CD");
                     Main.savings.add(account);
                 }
                 if(accountType.getSelectedItem().equals("Short Term Loan")){

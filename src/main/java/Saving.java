@@ -11,9 +11,9 @@ public class Saving extends  Account{
     protected double interestRate;
     protected LocalDate CDdate; //date CD matures
     protected LocalDate dateOpened;
+    protected double initBal;
 
-
-    public Saving( String custID, String accountID, double balance, double interestRate, String dateOpened, boolean isCD, String CDdate, String type) {
+    public Saving( String custID, String accountID, double initBal, double balance, double interestRate, String dateOpened, boolean isCD, String CDdate, String type) {
         super(accountID, custID, balance, type);
         if(dateOpened.length()>4)
             this.dateOpened = LocalDate.of(Integer.parseInt(dateOpened.substring(6)),
@@ -23,6 +23,7 @@ public class Saving extends  Account{
                     Integer.parseInt(CDdate.substring(0,2)), Integer.parseInt(CDdate.substring(3,5)));
         this.isCD = isCD;
         this.interestRate = interestRate;
+        this.initBal = initBal;
     }
 
     //deposit
@@ -69,6 +70,7 @@ public class Saving extends  Account{
         return
                 custID + ',' +
                         accountID + ',' +
+                        initBal + ',' +
                         balance + ',' +
                         interestRate + ',' +
                         date + ',' +
@@ -84,5 +86,6 @@ public class Saving extends  Account{
     public void setInterestRate(double interestRate) {this.interestRate = interestRate;}
     public double getBalance() {return balance;}
     public void setBalance(int balance) {this.balance = balance;}
+    public double getInitBal(){return initBal;}
 
 }//end of Saving
