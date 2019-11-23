@@ -103,8 +103,10 @@ public class CreateAccountAndCust {
                     if (backupAccount.getText().equals(null)){
                         backup = false;
                     }
+                    String cdate = LocalDate.now().toString();
+                    cdate = cdate.substring(5,7) +"/"+ cdate.substring(8) +"/"+ cdate.substring(0,4);
                     Checking account = new Checking(temp.getSsn(), acctNumField.getText(), Double.parseDouble(balanceField.getText()),
-                            LocalDate.now().toString(), backup, backupAccount.getText(), 0, "Checking");
+                            cdate, backup, backupAccount.getText(), 0, "Checking");
                     Main.checkings.add(account);
                 }
                 if(accountType.getSelectedItem().equals("Savings")){
@@ -118,8 +120,10 @@ public class CreateAccountAndCust {
                             }
                         }
                     }
+                    String cdate = LocalDate.now().toString();
+                    cdate = cdate.substring(5,7) +"/"+ cdate.substring(8) +"/"+ cdate.substring(0,4);
                    Saving account = new Saving(temp.getSsn(), acctNumField.getText(), Double.parseDouble(balanceField.getText()),
-                           Double.parseDouble(balanceField.getText()), Main.savingsInterest, LocalDate.now().toString(),
+                           Double.parseDouble(balanceField.getText()), Main.savingsInterest, cdate,
                            false, null, "Saving");
                     Main.savings.add(account);
                 }
@@ -128,8 +132,10 @@ public class CreateAccountAndCust {
                         backup = false;
                     }
                     LocalDate cdDate = LocalDate.now().plusYears(3);
+                    String cdate = LocalDate.now().toString();
+                    cdate = cdate.substring(5,7) +"/"+ cdate.substring(8) +"/"+ cdate.substring(0,4);
                     Saving account = new Saving(temp.getSsn(), acctNumField.getText(), Double.parseDouble(balanceField.getText()),
-                            Double.parseDouble(balanceField.getText()),Main.cdInterest, LocalDate.now().toString(),
+                            Double.parseDouble(balanceField.getText()),Main.cdInterest, cdate,
                             true, cdDate.toString(), "CD");
                     Main.savings.add(account);
                 }
