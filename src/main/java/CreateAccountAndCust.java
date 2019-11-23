@@ -66,7 +66,27 @@ public class CreateAccountAndCust {
                         statetField.setEditable(false);
                         zipField.setText(temp.getZipcode());
                         zipField.setEditable(false);
+                        ATM.setText(null);
+                        pinField.setText(null);
+                        backupAccount.setText(null);
                     }//customer exists, fill in info
+                    else{
+                        lastNameField.setText("");
+                        lastNameField.setEditable(true);
+                        firstNameField.setText("");
+                        firstNameField.setEditable(true);
+                        addressField.setText("");
+                        addressField.setEditable(true);
+                        cityField.setText("");
+                        cityField.setEditable(true);
+                        statetField.setText("");
+                        statetField.setEditable(true);
+                        zipField.setText("");
+                        zipField.setEditable(true);
+                        ATM.setText(null);
+                        pinField.setText(null);
+                        backupAccount.setText(null);
+                    }
                 }//see if customer exists
             }
         });
@@ -117,7 +137,7 @@ public class CreateAccountAndCust {
                     if (backupAccount.getText().equals(null)){
                         backup = false;
                     }
-                    LocalDate dueDate = LocalDate.now().plusYears(5);
+                    LocalDate dueDate = LocalDate.now().plusMonths(1);
                     Loan account = new Loan(temp.getSsn(), acctNumField.getText(), Double.parseDouble(balanceField.getText()),
                             Double.parseDouble(balanceField.getText()), Main.stlInterest,dueDate.toString(), null,
                             0.0, null, false, "Short Term Loan");
@@ -127,7 +147,7 @@ public class CreateAccountAndCust {
                     if (backupAccount.getText().equals(null)){
                         backup = false;
                     }
-                    LocalDate dueDate = LocalDate.now().plusYears(15);
+                    LocalDate dueDate = LocalDate.now().plusMonths(1);
                     Loan account = new Loan(temp.getSsn(), acctNumField.getText(), Double.parseDouble(balanceField.getText()),
                             Double.parseDouble(balanceField.getText()), Main.ltlInterest, dueDate.toString(), null,
                             0.0, null, false, "Long Term Loan");
@@ -137,7 +157,7 @@ public class CreateAccountAndCust {
                     if (backupAccount.getText().equals(null)){
                         backup = false;
                     }
-                    LocalDate dueDate = LocalDate.now().plusYears(15);
+                    LocalDate dueDate = LocalDate.now().plusMonths(1);
                     Loan account = new Loan(temp.getSsn(), acctNumField.getText(), Double.parseDouble(balanceField.getText()),
                             Double.parseDouble(balanceField.getText()), Main.ccInterest, dueDate.toString(), null,
                             0.0, null, false, "Credit Card");
