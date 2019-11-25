@@ -14,4 +14,3 @@
 563-43-2913,Martin,Williams,1532 Lovers Ln,St. Joseph,MO,64502,null,null
 345-67-9898,Broderick,Jones,703 Park Ln,St. Joseph,MO,64501,null,null
 999-99-9999,Joe,Dude,123 address,Sux,MO,66666,null,null
-
