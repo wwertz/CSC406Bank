@@ -33,7 +33,7 @@ public class EmpAccountLookup {
                     for (int i = 0; i < Main.customers.size(); i++) {
                         if (Main.customers.get(i).getSsn().equals(ssn)) {
                             lookupScreen.dispose();
-                            TellerScreen tellerScreen = new TellerScreen(ssn, null);
+                            TellerScreen tellerScreen = new TellerScreen(ssn, "null");
                         }
                     }
                     ErrorMessage.setText("Customer SSN Not Found");

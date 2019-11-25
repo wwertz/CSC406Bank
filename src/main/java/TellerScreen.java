@@ -63,7 +63,7 @@ public class TellerScreen {
                 accountList.add(temp);
             }
         }
-        if (id.equals(null) == false){
+        if (id.equals("null") == false){
             Accounts.setSelectedItem(id);
         }
         DefaultTableModel accountModel = new DefaultTableModel();
