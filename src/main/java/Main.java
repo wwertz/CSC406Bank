@@ -20,6 +20,7 @@ public class Main {
     public static ArrayList<Checking> checkings = new ArrayList<>();
     public static ArrayList<Saving> savings = new ArrayList<>();
     public static ArrayList<Loan> loans = new ArrayList<>();
+    public static ArrayList<Transaction> transactions = new ArrayList<>();
     public static double savingsInterest = 0.1;
     public static double stlInterest = 0.1;
     public static double ltlInterest = 0.1;
@@ -35,6 +36,7 @@ public class Main {
         readChecking(checkings);
         readSaving(savings);
         readLoan(loans);
+        readTransaction(transactions);
 
         //launch gui
         LoginScreen initial = new LoginScreen();
@@ -66,6 +68,7 @@ public class Main {
         writeData(checkings, "Checkings.txt");
         writeData(savings, "Savings.txt");
         writeData(loans, "Loans.txt");
+        writeData(transactions, "Transactions.txt");
     }//end of database
 
     public static void readCustomer(ArrayList<Customer> list) throws FileNotFoundException {
@@ -119,6 +122,16 @@ public class Main {
         }
         System.out.println("read loans accounts");
     }//end of readLoan
+
+    public static void readTransaction(ArrayList<Transaction> list) throws FileNotFoundException {
+        File file = new File("src/Transactions.txt");
+        Scanner input = new Scanner(file);
+        while(input.hasNextLine()){
+            String[] field = input.nextLine().split(",");
+            list.add(new Transaction(field[0], Double.parseDouble(field[1]), field[2], field[3]));
+        }
+        System.out.println("read transactions");
+    }//end of readCustomer
 
     public static void writeData(ArrayList<?> list, String source) throws IOException {
         File file = new File("src/" + source);

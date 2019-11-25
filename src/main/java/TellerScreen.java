@@ -88,6 +88,8 @@ public class TellerScreen {
                         if(accountModel.getRowCount() > 0) {
                             accountModel.removeRow(0);
                         }
+
+                        //get check info
                         accountModel.addRow(new Object[]{current.getType(), current.getAccountID(), current.getBalance()});
                         if(current.getType().equals("Gold Checking") || current.getType().equals("TMB Checking")){
                             for(int j = 0; j < Main.checks.size(); j++){
@@ -97,6 +99,17 @@ public class TellerScreen {
                                 }//add check to table
                             }//search checks table for checks from current account
                         }//extra steps for checking accounts
+
+                        //get CC info
+                        if(current.getType().equals("Credit Card")){
+                            for(int j = 0; j < Main.transactions.size(); j++){
+                                if(Main.transactions.get(j).getAccount().equals(current.accountID)){
+                                    Transaction temp = Main.transactions.get(j);
+                                    transactionModel.addRow(new Object[]{temp.getDate(), null, temp.getAmount(), temp.getDescription()});
+                                }//add check to table
+                            }//search checks table for CC from current account
+                        }//extra steps for CC loan accounts
+
                     }//add account info to tables
                 }//search customer accounts for selected account
             }//selectButton action
