@@ -16,6 +16,7 @@ public class CustomerScreenSSN {
         cusScreen.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         cusScreen.pack();
         cusScreen.setVisible(true);
+        cusScreen.setLocationRelativeTo(null);
 
         backButton.addActionListener(new ActionListener() {
             @Override

@@ -16,6 +16,7 @@ public class LoginScreen {
         loginScreen.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         loginScreen.pack();
         loginScreen.setVisible(true);
+        loginScreen.setLocationRelativeTo(null);
         Users.addItem("Customer");
         Users.addItem("ATM");
         Users.addItem("Teller");

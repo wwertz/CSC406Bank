@@ -29,6 +29,7 @@ public class ATMScreen {
         ATMScreen.pack();
         ATMScreen.setVisible(true);
         ATMScreen.setJMenuBar(menu);
+        ATMScreen.setLocationRelativeTo(null);
 
         //get checking info
         for (int i = 0; i < Main.checkings.size(); i++){

@@ -47,6 +47,7 @@ public class CreateAccountAndCust {
         createAcctCust.pack();
         createAcctCust.setVisible(true);
         createAcctCust.setJMenuBar(menu);
+        createAcctCust.setLocationRelativeTo(null);
 
         lookupSSNButton.addActionListener(new ActionListener() {
             @Override

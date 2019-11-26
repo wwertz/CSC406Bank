@@ -36,6 +36,8 @@ public class TellerScreen {
         telScreen.pack();
         telScreen.setVisible(true);
         telScreen.setJMenuBar(menu);
+        telScreen.setLocationRelativeTo(null);
+
         if (!Main.manager){closeAccountButton.setVisible(false);}
         for (int i = 0; i < Main.checkings.size(); i++){
             Checking temp = Main.checkings.get(i);

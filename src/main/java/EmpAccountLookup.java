@@ -25,6 +25,7 @@ public class EmpAccountLookup {
         lookupScreen.pack();
         lookupScreen.setVisible(true);
         lookupScreen.setJMenuBar(menu);
+        lookupScreen.setLocationRelativeTo(null);
         lookupButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

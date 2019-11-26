@@ -18,6 +18,7 @@ public class ATMLogin {
         ATMLogin.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         ATMLogin.pack();
         ATMLogin.setVisible(true);
+        ATMLogin.setLocationRelativeTo(null);
 
         ErrorMessage.setText("Enter ATM card and PIN");
 

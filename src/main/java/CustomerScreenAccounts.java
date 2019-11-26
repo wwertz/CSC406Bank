@@ -34,6 +34,7 @@ public class CustomerScreenAccounts {
         cusScreen.pack();
         cusScreen.setVisible(true);
         cusScreen.setJMenuBar(menu);
+        cusScreen.setLocationRelativeTo(null);
         for (int i = 0; i < Main.checkings.size(); i++){
             Checking temp = Main.checkings.get(i);
             if (temp.getCustID().equals(ssn)){

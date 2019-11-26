@@ -31,6 +31,7 @@ public class InterestScreen {
         InterestScreen.pack();
         InterestScreen.setVisible(true);
         InterestScreen.setJMenuBar(menu);
+        InterestScreen.setLocationRelativeTo(null);
 
         //back button
         backButton.addActionListener(new ActionListener() {

@@ -23,6 +23,8 @@ public class ManagerSelectFunction {
         managerScreen.pack();
         managerScreen.setVisible(true);
         managerScreen.setJMenuBar(menu);
+        managerScreen.setLocationRelativeTo(null);
+
         accountLookupButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
