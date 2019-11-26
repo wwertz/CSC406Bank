@@ -31,6 +31,8 @@ public class InterestScreen {
         InterestScreen.pack();
         InterestScreen.setVisible(true);
         InterestScreen.setJMenuBar(menu);
+
+        //back button
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -38,11 +40,68 @@ public class InterestScreen {
                 ManagerSelectFunction managerScreen = new ManagerSelectFunction();
             }
         });
+
+        //logout button
         logout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 InterestScreen.dispose();
                 LoginScreen loginScreen = new LoginScreen();
+            }
+        });
+
+        //saving interest
+        savingsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                double temp = Double.parseDouble(savingsField.getText());
+                if(savingsField != null && temp>0){
+                    Main.savingsInterest = temp;
+                }
+            }
+        });
+
+        //short term loan interest
+        shortLoanButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                double temp = Double.parseDouble(shortLoanField.getText());
+                if(shortLoanField != null && temp>0) {
+                    Main.stlInterest = temp;
+                }
+            }
+        });
+
+        //long term loan interest
+        longLoanButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                double temp = Double.parseDouble(longLoanField.getText());
+                if(longLoanField != null && temp>0) {
+                    Main.ltlInterest = temp;
+                }
+            }
+        });
+
+        //cd interest
+        CDsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                double temp = Double.parseDouble(CDField.getText());
+                if(CDField != null && temp>0) {
+                    Main.cdInterest = temp;
+                }
+            }
+        });
+
+        //credit card interest
+        creditCardButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                double temp = Double.parseDouble(creditCardField.getText());
+                if(creditCardField != null && temp>0) {
+                    Main.ccInterest = temp;
+                }
             }
         });
     }

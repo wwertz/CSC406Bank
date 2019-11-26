@@ -37,6 +37,7 @@ public class Main {
         readSaving(savings);
         readLoan(loans);
         readTransaction(transactions);
+        readGlobal();
 
         //launch gui
         LoginScreen initial = new LoginScreen();
@@ -53,7 +54,6 @@ public class Main {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
             }
         });
 
@@ -69,6 +69,7 @@ public class Main {
         writeData(savings, "Savings.txt");
         writeData(loans, "Loans.txt");
         writeData(transactions, "Transactions.txt");
+        writeGlobal("Global.txt");
     }//end of database
 
     public static void readCustomer(ArrayList<Customer> list) throws FileNotFoundException {
@@ -131,7 +132,29 @@ public class Main {
             list.add(new Transaction(field[0], Double.parseDouble(field[1]), field[2], field[3]));
         }
         System.out.println("read transactions");
-    }//end of readCustomer
+    }//end of readTransaction
+
+    public static void readGlobal() throws FileNotFoundException {
+        File file = new File("src/Global.txt");
+        Scanner input = new Scanner(file);
+        while(input.hasNextLine()){
+            String[] field = input.nextLine().split(",");
+            savingsInterest = Double.parseDouble(field[0]);
+            stlInterest = Double.parseDouble(field[1]);
+            ltlInterest = Double.parseDouble(field[2]);
+            ccInterest = Double.parseDouble(field[3]);
+            cdInterest = Double.parseDouble(field[4]);
+        }
+        System.out.println("read rates");
+    }//end of readGlobal
+
+    public static void writeGlobal(String source) throws IOException {
+        File file = new File("src/" + source);
+        PrintWriter out = new PrintWriter(file);
+        out.print(savingsInterest +","+ stlInterest +","+ ltlInterest +","+ ccInterest +","+ cdInterest);
+        System.out.println("write " + source);
+        out.close();
+    }//end of writeChecks
 
     public static void writeData(ArrayList<?> list, String source) throws IOException {
         File file = new File("src/" + source);
