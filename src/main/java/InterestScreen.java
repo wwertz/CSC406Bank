@@ -16,6 +16,11 @@ public class InterestScreen {
     private JPanel panel1;
     private JButton creditCardButton;
     private JTextField creditCardField;
+    private JLabel csaving;
+    private JLabel cCD;
+    private JLabel cshort;
+    private JLabel clong;
+    private JLabel ccredit;
     private JMenuItem logout;
     private JMenuBar menu;
 
@@ -32,6 +37,13 @@ public class InterestScreen {
         InterestScreen.setVisible(true);
         InterestScreen.setJMenuBar(menu);
         InterestScreen.setLocationRelativeTo(null);
+
+        //get values to display
+        csaving.setText(Double.toString(Main.savingsInterest));
+        cshort.setText(Double.toString(Main.stlInterest));
+        clong.setText(Double.toString(Main.ltlInterest));
+        cCD.setText(Double.toString(Main.cdInterest));
+        ccredit.setText(Double.toString(Main.ccInterest));
 
         //back button
         backButton.addActionListener(new ActionListener() {
@@ -58,6 +70,7 @@ public class InterestScreen {
                 double temp = Double.parseDouble(savingsField.getText());
                 if(savingsField != null && temp>0){
                     Main.savingsInterest = temp;
+                    csaving.setText(Double.toString(Main.savingsInterest));
                 }
             }
         });
@@ -69,6 +82,7 @@ public class InterestScreen {
                 double temp = Double.parseDouble(shortLoanField.getText());
                 if(shortLoanField != null && temp>0) {
                     Main.stlInterest = temp;
+                    cshort.setText(Double.toString(Main.stlInterest));
                 }
             }
         });
@@ -80,6 +94,7 @@ public class InterestScreen {
                 double temp = Double.parseDouble(longLoanField.getText());
                 if(longLoanField != null && temp>0) {
                     Main.ltlInterest = temp;
+                    clong.setText(Double.toString(Main.ltlInterest));
                 }
             }
         });
@@ -91,6 +106,7 @@ public class InterestScreen {
                 double temp = Double.parseDouble(CDField.getText());
                 if(CDField != null && temp>0) {
                     Main.cdInterest = temp;
+                    cCD.setText(Double.toString(Main.cdInterest));
                 }
             }
         });
@@ -102,6 +118,7 @@ public class InterestScreen {
                 double temp = Double.parseDouble(creditCardField.getText());
                 if(creditCardField != null && temp>0) {
                     Main.ccInterest = temp;
+                    ccredit.setText(Double.toString(Main.ccInterest));
                 }
             }
         });
