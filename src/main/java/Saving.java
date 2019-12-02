@@ -26,6 +26,10 @@ public class Saving extends  Account{
         this.initBal = initBal;
     }
 
+    public void accrueInterest(){
+        balance = balance+(balance*(interestRate/100));
+    }
+
     //deposit
     public void deposit(double amount){
         balance += amount;
