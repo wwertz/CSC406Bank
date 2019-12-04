@@ -10,6 +10,7 @@ public class ATMScreen {
     private JTextField amount;
     private JPanel panel1;
     private JButton backButton;
+    private JLabel errorMessage;
     private JMenuItem logout;
     private JMenuBar menu;
 
@@ -19,6 +20,7 @@ public class ATMScreen {
     Checking temp;
 
     public ATMScreen(String ssn) {
+        errorMessage.setText("");
         menu = new JMenuBar();
         logout = new JMenuItem("Logout");
         menu.add(logout);
@@ -76,6 +78,7 @@ public class ATMScreen {
             public void actionPerformed(ActionEvent e) {
                 temp.withdrawal(Double.parseDouble(amount.getText()));
                 accountInfo.setValueAt(temp.getBalance(), 0, 2);
+
             }
         });
     }

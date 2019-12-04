@@ -167,8 +167,10 @@ public class TellerScreen {
                             to = accountList.get(i);
                         }
                     }//get the selected account
-                    to.deposit(amount);
-                    from.withdrawal(amount);
+                    if(amount <= from.balance) {
+                        to.deposit(amount);
+                        from.withdrawal(amount);
+                    }
                 }
                 accountModel.setValueAt(current.getBalance(), 0, 2);
             }

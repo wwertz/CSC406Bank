@@ -12,6 +12,7 @@ public class Checking extends  Account{
     protected String backupID; //saving account ID
     protected LocalDate dateOpened;
     protected int overdrafts;
+    protected Saving backup;
 
     //constructor
     public Checking(String custID, String accountID, double balance, String dateOpened, boolean hasBackup, String backupID, int overdrafts, String type) {
@@ -23,6 +24,7 @@ public class Checking extends  Account{
         this.backupID = backupID;
         this.overdrafts = overdrafts;
         checkType();
+
     }
 
     //deposit and check to see if upgrade or downgrade
@@ -39,18 +41,36 @@ public class Checking extends  Account{
     public void withdrawal(double amount){
         //check amount vs balance
         if(amount>=balance){
-            System.out.println("not enough in balance, checking for backup");
+            System.out.println("Not enough in account. Checking for backup");
+
+            //check for backup;
             if(hasBackup==true){
-                //****************************needs update after savings finished*******************************
+
+                for(int i=0; i<Main.savings.size(); i++){
+                    if(this.backupID.equals(Main.savings.get(i).getAccountID())){
+                        backup = Main.savings.get(i);
+                    }
+                }
+
+                if(backup.getBalance() + balance >= amount){
+                    amount -= balance;
+                    balance = 0;
+                    backup.withdrawal(amount+.5);
+                }else{
+                    //withdrawal(amount);
+                    //check for fees
+                    balance -= 2.50;
+                }
             }
-        }else if(amount<balance){
+
+        }else{
             balance-= amount;
+            //check for fees
+            if(type.equals("TMB Checking"))
+                balance -= .50;
         }
 
-        //check for fees
-        if(type.equals("TMB Checking"))
-            balance -= .50;
-
+        return;
     }
 
     //check type
@@ -88,4 +108,6 @@ public class Checking extends  Account{
     public void setBackupID(String backupID) {
         this.backupID = backupID;
     }
+    public String getBackupID() {return backupID;}
+    public int getOverdrafts() {return overdrafts;}
 }//end of Checking

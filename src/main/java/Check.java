@@ -6,10 +6,10 @@ public class Check {
     private String checkingAccID;
     private String date;
     private double amount;
-    private boolean processed;
+    private String processed;
 
     //constructor
-    public Check(String checkNumber, String checkingAccID, String date, double amount, boolean processed) {
+    public Check(String checkNumber, String checkingAccID, String date, double amount, String processed) {
         this.checkNumber = checkNumber;
         this.checkingAccID = checkingAccID;
         this.date = date;
@@ -31,6 +31,6 @@ public class Check {
     public String getCheckNumber() {return checkNumber;}
     public String getDate() {return date;}
     public double getAmount() {return amount;}
-    public boolean isProcessed() {return processed;}
-    public void setProcessed(boolean processed) {this.processed = processed;}
+    public String isProcessed() {return processed;}
+    public void setProcessed(String processed) {this.processed = processed;}
 }

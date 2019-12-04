@@ -87,7 +87,7 @@ public class Main {
             Scanner input = new Scanner(file);
             while(input.hasNextLine()){
                 String[] field = input.nextLine().split(",");
-                list.add(new Check(field[0],field[1],field[2],Double.parseDouble(field[3]),Boolean.valueOf(field[4])));
+                list.add(new Check(field[0],field[1],field[2],Double.parseDouble(field[3]), field[4]));
             }
         System.out.println("read checks");
     }//end of readChecks
@@ -154,7 +154,7 @@ public class Main {
         out.print(savingsInterest +","+ stlInterest +","+ ltlInterest +","+ ccInterest +","+ cdInterest);
         System.out.println("write " + source);
         out.close();
-    }//end of writeChecks
+    }//end of writeGlobal
 
     public static void writeData(ArrayList<?> list, String source) throws IOException {
         File file = new File("src/" + source);
@@ -164,13 +164,13 @@ public class Main {
         }
         System.out.println("write " + source);
         out.close();
-    }//end of writeChecks
+    }//end of writeData
 
     //still needs to charge the customer once we get data in
     public static void stopPayment(ArrayList<Check> list, ArrayList<Checking> checking, String checkNumber){
         for(int i=0; i<list.size(); i++){
             if(list.get(i).getCheckNumber().equals(checkNumber)){
-                if(list.get(i).isProcessed()==false){
+                if(list.get(i).isProcessed().equals("false")){
                     System.out.println(list.get(i).getCheckNumber() + " Is removed and wont be processed");
                     for(int j=0; j<checking.size(); j++){
                         //find the right account to charge

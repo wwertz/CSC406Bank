@@ -117,8 +117,10 @@ public class CustomerScreenAccounts {
                             to = accountList.get(i);
                         }
                     }//get the selected account
-                    to.deposit(amount);
-                    from.withdrawal(amount);
+                    if (amount <= from.balance) {
+                        to.deposit(amount);
+                        from.withdrawal(amount);
+                    }
                 }
                 accountModel.setValueAt(current.getBalance(), 0, 2);
             }
@@ -126,13 +128,13 @@ public class CustomerScreenAccounts {
         cancelCheckButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Check toCancel = new Check(null, null, null, 0.0, false);
+                Check toCancel = new Check(null, null, null, 0.0, "false");
                 int row = transactions.getSelectedRow();
                 String num = transactions.getValueAt(row, 1).toString();
                 for (int i = 0; i < Main.checks.size(); i++){
                     if (Main.checks.get(i).getCheckNumber().equals(num)){
                         toCancel = Main.checks.get(i);
-                        toCancel.setProcessed(false);
+                        toCancel.setProcessed("cancelled");
                         current.withdrawal(15);
                         accountInfo.setValueAt(current.balance, 0, 2);
                         transactions.setValueAt(toCancel.isProcessed(), row, 2);

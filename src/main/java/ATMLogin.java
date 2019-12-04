@@ -29,15 +29,15 @@ public class ATMLogin {
                 String card = cardNum.getText();
                 String pin = PIN.getText();
                 for(int i=0; i<Main.customers.size(); i++){
-                    if(Main.customers.get(i).getAtmCard().equals(card) ){
+                    if(Main.customers.get(i).getAtmCard().equals(card) && Main.customers.get(i).getPin().equals(pin)){
                         String ssn = Main.customers.get(i).getSsn();
                         ATMLogin.dispose();
                         ATMScreen ATM = new ATMScreen(ssn);
-                    }else{
-                        ErrorMessage.setText("Invalid account to PIN. Please retry.");
-                        ErrorMessage.setForeground(Color.red);
                     }
+
                 }//end of for
+                ErrorMessage.setText("Invalid account or PIN. Please retry.");
+                ErrorMessage.setForeground(Color.red);
             }
         });
 
