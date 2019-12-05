@@ -27,7 +27,7 @@ public class Saving extends  Account{
     }
 
     public void accrueInterest(){
-        balance = balance+(balance*(interestRate/100));
+        balance = balance+(balance*(interestRate/12));
     }
 
     //deposit

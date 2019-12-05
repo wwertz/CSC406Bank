@@ -40,7 +40,7 @@ public class Loan extends Account{
     }
 
     public void accrueInterest(){
-        amountDue = amountDue+(amountDue*(interestRate/100));
+        amountDue = amountDue+(amountDue*(interestRate/12));
     }
 
     //make a payment

@@ -21,6 +21,7 @@ public class InterestScreen {
     private JLabel cshort;
     private JLabel clong;
     private JLabel ccredit;
+    private JButton accrueInterest;
     private JMenuItem logout;
     private JMenuBar menu;
 
@@ -119,6 +120,17 @@ public class InterestScreen {
                 if(creditCardField != null && temp>0) {
                     Main.ccInterest = temp;
                     ccredit.setText(Double.toString(Main.ccInterest));
+                }
+            }
+        });
+        accrueInterest.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for (int i = 0; i < Main.savings.size(); i++){
+                    Main.savings.get(i).accrueInterest();
+                }
+                for (int i = 0; i < Main.loans.size(); i++){
+                    Main.loans.get(i).accrueInterest();
                 }
             }
         });
