@@ -38,7 +38,7 @@ public class Checking extends  Account{
     }
 
     //withdrawal
-    public void withdrawal(double amount){
+    public boolean withdrawal(double amount){
         //check amount vs balance
         if(amount>=balance){
             System.out.println("Not enough in account. Checking for backup");
@@ -56,10 +56,12 @@ public class Checking extends  Account{
                     amount -= balance;
                     balance = 0;
                     backup.withdrawal(amount+.5);
+                    return true;
                 }else{
                     //withdrawal(amount);
                     //check for fees
                     balance -= 2.50;
+                    return false;
                 }
             }
 
@@ -70,7 +72,7 @@ public class Checking extends  Account{
                 balance -= .50;
         }
 
-        return;
+        return true;
     }
 
     //check type

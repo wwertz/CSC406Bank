@@ -40,6 +40,7 @@ public class Loan extends Account{
     }
 
     public void accrueInterest(){
+
         balance = balance+(balance*(interestRate/12));
     }
 
@@ -47,7 +48,12 @@ public class Loan extends Account{
         if (type.equals("Long Term Loan")) {
             amountDue = balance * .025;
             dueDate = LocalDate.now().plusMonths(1);
-        } else {
+        } else if (type.equals("Credit Card")){
+            amountDue = balance;
+            dueDate = LocalDate.now().plusDays(10);
+        }
+
+        else {
             amountDue = balance * .05;
             dueDate = LocalDate.now().plusMonths(1);
         }
