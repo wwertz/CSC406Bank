@@ -145,8 +145,8 @@ public class InterestScreen {
                         String acID = checky.getCheckingAccID();
                         for (int j = 0; j < Main.checkings.size(); j++) {
                             if (acID.equals(Main.checkings.get(j).accountID)) {
-                                if (Main.checkings.get(j).balance >= amount) { // balance >= check amount
                                     boolean success = Main.checkings.get(j).withdrawal(amount);
+                                    System.out.println(success);
                                     if (success) {
                                         checky.setProcessed("true");
                                     } else {
@@ -160,7 +160,6 @@ public class InterestScreen {
 
                 }
 
-            }
         });
     }
 }
