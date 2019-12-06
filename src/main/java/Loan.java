@@ -40,7 +40,7 @@ public class Loan extends Account{
     }
 
     public void accrueInterest(){
-        amountDue = amountDue+(amountDue*(interestRate/12));
+        balance = balance+(balance*(interestRate/12));
     }
 
     //make a payment
@@ -51,13 +51,13 @@ public class Loan extends Account{
         if (type.equals("Long Term Loan") || type.equals("Short Term Loan")) {  //loans
             if(LocalDate.now().isAfter(dueDate)){               //late
                 flag = true;
-                balance += balance*interestRate/100;
+                //balance += balance*interestRate/100;
                 balance += 75.00;
                 balance -= amount;
                 lastPaymentDate = LocalDate.now();
             }else{                                             //not late
                 flag = false;
-                balance += balance*interestRate/100;
+                //balance += balance*interestRate/100;
                 balance -= amount;
                 lastPaymentDate = LocalDate.now();
             }
@@ -65,7 +65,7 @@ public class Loan extends Account{
             LocalDate beforeCharge = LocalDate.of(notifiedDate.getYear(), notifiedDate.getMonth(), 10);
             if(LocalDate.now().isAfter(dueDate)){               //late
                 flag = true;
-                balance += balance*interestRate/100;
+                //balance += balance*interestRate/100;
                 balance += 75.00;
                 balance -= amount;
                 lastPaymentDate = LocalDate.now();
@@ -77,7 +77,7 @@ public class Loan extends Account{
                 creditHistory.add("Payment of " +Double.toString(amount) +" on "+ LocalDate.now());
             }else{                                             //on time with finance charge
                 flag = true;
-                balance += balance*interestRate/100;
+                //balance += balance*interestRate/100;
                 balance -= amount;
                 lastPaymentDate = LocalDate.now();
                 creditHistory.add("Payment of " +Double.toString(amount) +" on "+ LocalDate.now());
