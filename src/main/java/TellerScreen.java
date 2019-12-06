@@ -80,6 +80,7 @@ public class TellerScreen {
         accountInfo.setModel(accountModel);
         DefaultTableModel transactionModel = new DefaultTableModel();
         transactionModel.addColumn("Date");
+        transactionModel.addColumn("#");
         transactionModel.addColumn("Processed");
         transactionModel.addColumn("Amount");
         transactionModel.addColumn("Description");
@@ -102,7 +103,8 @@ public class TellerScreen {
                             for(int j = 0; j < Main.checks.size(); j++){
                                 if(Main.checks.get(j).getCheckingAccID().equals(current.accountID)){
                                     Check temp = Main.checks.get(j);
-                                    transactionModel.addRow(new Object[]{temp.getDate(), temp.isProcessed(), temp.getAmount(), null});
+                                    transactionModel.addRow(new Object[]{temp.getDate(), temp.getCheckNumber(),
+                                            temp.isProcessed(), temp.getAmount(), null});
                                 }//add check to table
                             }//search checks table for checks from current account
                         }//extra steps for checking accounts
@@ -112,7 +114,7 @@ public class TellerScreen {
                             for(int j = 0; j < Main.transactions.size(); j++){
                                 if(Main.transactions.get(j).getAccount().equals(current.accountID)){
                                     Transaction temp = Main.transactions.get(j);
-                                    transactionModel.addRow(new Object[]{temp.getDate(), null, temp.getAmount(), temp.getDescription()});
+                                    transactionModel.addRow(new Object[]{temp.getDate(), null, "true", temp.getAmount(), temp.getDescription()});
                                 }//add check to table
                             }//search checks table for CC from current account
                         }//extra steps for CC loan accounts

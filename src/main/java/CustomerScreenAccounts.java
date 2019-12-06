@@ -3,6 +3,7 @@ import javax.swing.table.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class CustomerScreenAccounts {
@@ -19,6 +20,11 @@ public class CustomerScreenAccounts {
     private JButton cancelCheckButton;
     private JTable transactions;
     private JButton SelectButton;
+    private JButton transactionButton;
+    private JTextField transAmount;
+    private JTextField transDesc;
+    private JLabel amtLabel;
+    private JLabel descLabel;
     private JMenuItem logout;
     private JMenuBar menu;
     private ArrayList<Account> accountList = new ArrayList<>();
@@ -61,6 +67,11 @@ public class CustomerScreenAccounts {
                 accountList.add(temp);
             }
         }
+        transactionButton.setVisible(false);
+        transAmount.setVisible(false);
+        transDesc.setVisible(false);
+        amtLabel.setVisible(false);
+        descLabel.setVisible(false);
         DefaultTableModel accountModel = new DefaultTableModel();
         accountModel.addColumn("Account Type");
         accountModel.addColumn("Account ID");
@@ -87,6 +98,11 @@ public class CustomerScreenAccounts {
                         }
                         accountModel.addRow(new Object[]{current.getType(), current.getAccountID(), current.getBalance()});
                         if(current.getType().equals("Gold Checking") || current.getType().equals("TMB Checking")){
+                            transactionButton.setVisible(true);
+                            transAmount.setVisible(true);
+                            transDesc.setVisible(true);
+                            amtLabel.setVisible(true);
+                            descLabel.setVisible(true);
                             for(int j = 0; j < Main.checks.size(); j++){
                                 if(Main.checks.get(j).getCheckingAccID().equals(current.accountID)){
                                     Check temp = Main.checks.get(j);
@@ -95,6 +111,19 @@ public class CustomerScreenAccounts {
                                 }//add check to table
                             }//search checks table for checks from current account
                         }//extra steps for checking accounts
+                        if(current.getType().equals("Credit Card")){
+                            transactionButton.setVisible(true);
+                            transAmount.setVisible(true);
+                            transDesc.setVisible(true);
+                            amtLabel.setVisible(true);
+                            descLabel.setVisible(true);
+                            for(int j = 0; j < Main.transactions.size(); j++){
+                                if(Main.transactions.get(j).getAccount().equals(current.accountID)){
+                                    Transaction temp = Main.transactions.get(j);
+                                    transactionModel.addRow(new Object[]{temp.getDate(), null, "true", temp.getAmount(), temp.getDescription()});
+                                }//add check to table
+                            }//search checks table for CC from current account
+                        }//extra steps for CC loan accounts
                     }//add account info to tables
                 }//search customer accounts for selected account
             }//selectButton action
@@ -138,6 +167,7 @@ public class CustomerScreenAccounts {
                         current.withdrawal(15);
                         accountInfo.setValueAt(current.balance, 0, 2);
                         transactions.setValueAt(toCancel.isProcessed(), row, 2);
+
                     }
                 }
 
@@ -158,5 +188,31 @@ public class CustomerScreenAccounts {
             }
         });
 
+        transactionButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if (accountModel.getValueAt(0, 0).equals("Credit Card")){
+                    Transaction tran = new Transaction(accountModel.getValueAt(0, 1).toString(),
+                            Double.parseDouble(transAmount.getText()),
+                            LocalDate.now().toString(), transDesc.getText());
+                    //TODO: credit limit check
+                    Main.transactions.add(tran);
+                    transactionModel.addRow(new Object[]{tran.getDate(), null, "true", tran.getAmount(), tran.getDescription()});
+
+                }else{
+                    int sizeChecks = Main.checks.size() -1;
+                    int num = Integer.parseInt(Main.checks.get(sizeChecks).getCheckNumber()) + 1;
+                    Check checky = new Check(""+num,
+                            accountModel.getValueAt(0,1).toString(), LocalDate.now().toString(),
+                            Double.parseDouble((transAmount.getText())),
+                            "false");
+                    Main.checks.add(checky);
+                    transactionModel.addRow(new Object[]{checky.getDate(), checky.getCheckNumber(), checky.isProcessed(), checky.getAmount(),""});
+
+                }
+
+
+            }
+        });
     }
 }
