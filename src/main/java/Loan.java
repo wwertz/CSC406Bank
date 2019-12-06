@@ -100,13 +100,14 @@ public class Loan extends Account{
         }
     }
     @Override
-    public void withdrawal(double amount) {
+    public boolean withdrawal(double amount) {
         if (type.equals("Credit Card")){
             if (amountDue + amount < balance) {
                 amountDue += amount;
+                return true;
             }
         }
-
+        return true;
     }
     @Override
     public String toString() {

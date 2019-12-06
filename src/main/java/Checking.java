@@ -60,9 +60,13 @@ public class Checking extends  Account{
                 }else{
                     //withdrawal(amount);
                     //check for fees
-                    balance -= 2.50;
+                    balance -= 20;
                     return false;
                 }
+
+            }else{
+                balance -= 20;
+                return false;
             }
 
         }else{
