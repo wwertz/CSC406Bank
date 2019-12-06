@@ -43,6 +43,15 @@ public class Loan extends Account{
         balance = balance+(balance*(interestRate/12));
     }
 
+    public void postBill() {
+        if (type.equals("Long Term Loan")) {
+            amountDue = balance * .025;
+            dueDate = LocalDate.now().plusMonths(1);
+        } else {
+            amountDue = balance * .05;
+            dueDate = LocalDate.now().plusMonths(1);
+        }
+    }
     //make a payment
     @Override
     public void deposit(double amount){
@@ -86,7 +95,11 @@ public class Loan extends Account{
     }
     @Override
     public void withdrawal(double amount) {
-
+        if (type.equals("Credit Card")){
+            if (amountDue + amount < balance) {
+                amountDue += amount;
+            }
+        }
 
     }
     @Override

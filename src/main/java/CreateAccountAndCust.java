@@ -183,7 +183,7 @@ public class CreateAccountAndCust {
                         if(create) {
                             Saving account = new Saving(temp.getSsn(), acctNumField.getText(), Double.parseDouble(balanceField.getText()),
                                     Double.parseDouble(balanceField.getText()), Main.savingsInterest, cdate,
-                                    false, null, "Saving");
+                                    false, "null", "Saving");
                             Main.savings.add(account);
                         }
                     }
@@ -206,7 +206,7 @@ public class CreateAccountAndCust {
                         LocalDate dueDate = LocalDate.now().plusMonths(1);
                         Loan account = new Loan(temp.getSsn(), acctNumField.getText(), Double.parseDouble(balanceField.getText()),
                                 Double.parseDouble(balanceField.getText()), Main.stlInterest, dueDate.toString(), null,
-                                0.0, null, false, "Short Term Loan");
+                                Double.parseDouble(balanceField.getText())*.05, null, false, "Short Term Loan");
                         Main.loans.add(account);
                     }
                     if (accountType.getSelectedItem().equals("Long Term Loan")) {
@@ -215,7 +215,7 @@ public class CreateAccountAndCust {
                         LocalDate dueDate = LocalDate.now().plusMonths(1);
                         Loan account = new Loan(temp.getSsn(), acctNumField.getText(), Double.parseDouble(balanceField.getText()),
                                 Double.parseDouble(balanceField.getText()), Main.ltlInterest, dueDate.toString(), null,
-                                0.0, null, false, "Long Term Loan");
+                                Double.parseDouble(balanceField.getText())*.025, null, false, "Long Term Loan");
                         Main.loans.add(account);
                     }
                     if (accountType.getSelectedItem().equals("Credit Card")) {
