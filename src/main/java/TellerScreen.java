@@ -39,6 +39,11 @@ public class TellerScreen {
         telScreen.setLocationRelativeTo(null);
 
         if (!Main.manager){closeAccountButton.setVisible(false);}
+        for( int i = 0; i < Main.customers.size(); i++){
+            if (Main.customers.get(i).getSsn().equals(ssn)) {
+                customerName.setText(Main.customers.get(i).getFirstName() + " " + Main.customers.get(i).getLastName());
+            }
+        }
         for (int i = 0; i < Main.checkings.size(); i++){
             Checking temp = Main.checkings.get(i);
             if (temp.getCustID().equals(ssn)){
