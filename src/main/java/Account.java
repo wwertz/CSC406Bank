@@ -8,13 +8,15 @@ public abstract class Account {
     protected double balance;
     protected LocalDate dateOpened; //get current date when created
     protected String type;
+    protected String dateAccrued;
 
     //constructor
-    public Account(String accountID, String custID, double balance, String type) {
+    public Account(String accountID, String custID, double balance, String type, String dateAccrued) {
         this.accountID = accountID;
         this.custID = custID;
         this.balance = balance;
         this.type = type;
+        this.dateAccrued = dateAccrued;
     }
 
     //getter and setters

@@ -97,7 +97,7 @@ public class Main {
         Scanner input = new Scanner(file);
         while(input.hasNextLine()){
             String[] field = input.nextLine().split(",");
-            list.add(new Checking(field[0], field[1], Double.parseDouble(field[2]), field[3], Boolean.valueOf(field[4]), field[5], Integer.parseInt(field[6]), field[7]));
+            list.add(new Checking(field[0], field[1], Double.parseDouble(field[2]), field[3], Boolean.valueOf(field[4]), field[5], Integer.parseInt(field[6]), field[7], field[8]));
         }
         System.out.println("read checking accounts");
     }//end of readChecking
@@ -108,7 +108,7 @@ public class Main {
         while(input.hasNextLine()){
             String[] field = input.nextLine().split(",");
             list.add(new Saving(field[0], field[1],Double.parseDouble(field[2]), Double.parseDouble(field[3]),
-                    Double.parseDouble(field[4]),field[5],Boolean.valueOf(field[6]),field[7],field[8]));
+                    Double.parseDouble(field[4]),field[5],Boolean.valueOf(field[6]),field[7],field[8], field[9]));
         }
         System.out.println("read savings account");
     }//end of readSaving
@@ -119,7 +119,7 @@ public class Main {
         while(input.hasNextLine()){
             String[] field = input.nextLine().split(",");
             list.add(new Loan(field[0], field[1], Double.parseDouble(field[2]), Double.parseDouble(field[3]), Double.parseDouble(field[4]),
-                    field[5], field[6], Double.parseDouble(field[7]), field[8], Boolean.valueOf(field[9]), field[10]));
+                    field[5], field[6], Double.parseDouble(field[7]), field[8], Boolean.valueOf(field[9]), field[10], field[11]));
         }
         System.out.println("read loans accounts");
     }//end of readLoan

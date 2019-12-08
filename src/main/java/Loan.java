@@ -19,11 +19,12 @@ public class Loan extends Account{
     protected LocalDate lastPaymentDate; //date of last payment made
     protected boolean flag = false;
     protected ArrayList<String> creditHistory;
+    protected LocalDate dateAccrued;
 
     //constructor
     public Loan(String custID, String accountID, double initialBalance, double balance, double interestRate,
-                String dueDate, String notifiedDate, double amountDue, String lastPaymentDate, boolean flag, String type) {
-        super(accountID, custID, balance, type);
+                String dueDate, String notifiedDate, double amountDue, String lastPaymentDate, boolean flag, String type, String dateAccrued) {
+        super(accountID, custID, balance, type, dateAccrued);
         this.initialBalance = initialBalance;
         this.interestRate = interestRate;
         this.amountDue = amountDue;
@@ -37,6 +38,9 @@ public class Loan extends Account{
             this.lastPaymentDate = LocalDate.of(Integer.parseInt(lastPaymentDate.substring(6)),
                     Integer.parseInt(lastPaymentDate.substring(0,2)), Integer.parseInt(lastPaymentDate.substring(3,5)));
         this.flag = flag;
+        if(dateAccrued.length()>4)
+            this.dateAccrued = LocalDate.of(Integer.parseInt(dateAccrued.substring(6)),
+                    Integer.parseInt(dateAccrued.substring(0,2)), Integer.parseInt(dateAccrued.substring(3,5)));
     }
 
     public void accrueInterest(){
@@ -116,6 +120,14 @@ public class Loan extends Account{
             ldate = null;
         }
 
+        String aDate;
+        if(dateAccrued != null){
+            aDate = dateAccrued.toString();
+            aDate = aDate.substring(5,7) +"/"+ aDate.substring(8) +"/"+ aDate.substring(0,4);
+        }else {
+            aDate = null;
+        }
+
         return
                 custID + ',' +
                 accountID + ',' +
@@ -127,7 +139,8 @@ public class Loan extends Account{
                 amountDue + ',' +
                 ldate + ',' +
                 flag + ',' +
-                type;
+                type + ',' +
+                aDate;
     }
 
     public void JSONLoanToTxt(String custID, String accountID, double initialBalance, double balance, double interestRate,

@@ -13,10 +13,11 @@ public class Checking extends  Account{
     protected LocalDate dateOpened;
     protected int overdrafts;
     protected Saving backup;
+    protected LocalDate dateAccrued;
 
     //constructor
-    public Checking(String custID, String accountID, double balance, String dateOpened, boolean hasBackup, String backupID, int overdrafts, String type) {
-        super(accountID, custID, balance, type);
+    public Checking(String custID, String accountID, double balance, String dateOpened, boolean hasBackup, String backupID, int overdrafts, String type, String dateAccrued) {
+        super(accountID, custID, balance, type, dateAccrued);
         if(dateOpened.length()>4)
             this.dateOpened = LocalDate.of(Integer.parseInt(dateOpened.substring(6)),
                     Integer.parseInt(dateOpened.substring(0,2)), Integer.parseInt(dateOpened.substring(3,5)));
@@ -24,6 +25,9 @@ public class Checking extends  Account{
         this.backupID = backupID;
         this.overdrafts = overdrafts;
         checkType();
+        if(dateAccrued.length()>4)
+            this.dateAccrued = LocalDate.of(Integer.parseInt(dateAccrued.substring(6)),
+                    Integer.parseInt(dateAccrued.substring(0,2)), Integer.parseInt(dateAccrued.substring(3,5)));
 
     }
 
@@ -92,6 +96,14 @@ public class Checking extends  Account{
             date = null;
         }
 
+        String aDate;
+        if(dateAccrued != null){
+            aDate = dateAccrued.toString();
+            aDate = aDate.substring(5,7) +"/"+ aDate.substring(8) +"/"+ aDate.substring(0,4);
+        }else {
+            aDate = null;
+        }
+
         return
                 custID + ',' +
                         accountID + ',' +
@@ -100,7 +112,8 @@ public class Checking extends  Account{
                         hasBackup + ',' +
                         backupID + ',' +
                         overdrafts + ',' +
-                        type;
+                        type + ',' +
+                        aDate;
     }
 
     public boolean isHasBackup() {return hasBackup;}

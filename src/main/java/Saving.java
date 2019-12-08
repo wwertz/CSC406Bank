@@ -11,16 +11,20 @@ public class Saving extends  Account{
     protected double interestRate;
     protected LocalDate CDdate; //date CD matures
     protected LocalDate dateOpened;
+    protected LocalDate dateAccrued;
     protected double initBal;
 
-    public Saving( String custID, String accountID, double initBal, double balance, double interestRate, String dateOpened, boolean isCD, String CDdate, String type) {
-        super(accountID, custID, balance, type);
+    public Saving( String custID, String accountID, double initBal, double balance, double interestRate, String dateOpened, boolean isCD, String CDdate, String type, String dateAccrued) {
+        super(accountID, custID, balance, type, dateAccrued);
         if(dateOpened.length()>4)
             this.dateOpened = LocalDate.of(Integer.parseInt(dateOpened.substring(6)),
                     Integer.parseInt(dateOpened.substring(0,2)), Integer.parseInt(dateOpened.substring(3,5)));
         if(CDdate.length()>4)
             this.CDdate = LocalDate.of(Integer.parseInt(CDdate.substring(6)),
                     Integer.parseInt(CDdate.substring(0,2)), Integer.parseInt(CDdate.substring(3,5)));
+        if(dateAccrued.length()>4)
+            this.dateAccrued = LocalDate.of(Integer.parseInt(dateAccrued.substring(6)),
+                    Integer.parseInt(dateAccrued.substring(0,2)), Integer.parseInt(dateAccrued.substring(3,5)));
         this.isCD = isCD;
         this.interestRate = interestRate;
         this.initBal = initBal;
@@ -71,6 +75,14 @@ public class Saving extends  Account{
             cDate = null;
         }
 
+        String aDate;
+        if(dateAccrued != null){
+            aDate = dateAccrued.toString();
+            aDate = aDate.substring(5,7) +"/"+ aDate.substring(8) +"/"+ aDate.substring(0,4);
+        }else {
+            aDate = null;
+        }
+
         return
                 custID + ',' +
                         accountID + ',' +
@@ -80,7 +92,8 @@ public class Saving extends  Account{
                         date + ',' +
                         isCD + ',' +
                         cDate + ',' +
-                        type;
+                        type + ',' +
+                        aDate;
     }
 
     //getters and setters
