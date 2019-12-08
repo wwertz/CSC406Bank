@@ -22,6 +22,7 @@ public class InterestScreen {
     private JLabel clong;
     private JLabel ccredit;
     private JButton accrueInterest;
+    private JButton processTransactionButton;
     private JMenuItem logout;
     private JMenuBar menu;
 
@@ -69,7 +70,7 @@ public class InterestScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 double temp = Double.parseDouble(savingsField.getText());
-                if(savingsField != null && temp>0){
+                if (savingsField != null && temp > 0) {
                     Main.savingsInterest = temp;
                     csaving.setText(Double.toString(Main.savingsInterest));
                 }
@@ -81,7 +82,7 @@ public class InterestScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 double temp = Double.parseDouble(shortLoanField.getText());
-                if(shortLoanField != null && temp>0) {
+                if (shortLoanField != null && temp > 0) {
                     Main.stlInterest = temp;
                     cshort.setText(Double.toString(Main.stlInterest));
                 }
@@ -93,7 +94,7 @@ public class InterestScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 double temp = Double.parseDouble(longLoanField.getText());
-                if(longLoanField != null && temp>0) {
+                if (longLoanField != null && temp > 0) {
                     Main.ltlInterest = temp;
                     clong.setText(Double.toString(Main.ltlInterest));
                 }
@@ -105,7 +106,7 @@ public class InterestScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 double temp = Double.parseDouble(CDField.getText());
-                if(CDField != null && temp>0) {
+                if (CDField != null && temp > 0) {
                     Main.cdInterest = temp;
                     cCD.setText(Double.toString(Main.cdInterest));
                 }
@@ -117,7 +118,7 @@ public class InterestScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 double temp = Double.parseDouble(creditCardField.getText());
-                if(creditCardField != null && temp>0) {
+                if (creditCardField != null && temp > 0) {
                     Main.ccInterest = temp;
                     ccredit.setText(Double.toString(Main.ccInterest));
                 }
@@ -126,13 +127,39 @@ public class InterestScreen {
         accrueInterest.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (int i = 0; i < Main.savings.size(); i++){
+                for (int i = 0; i < Main.savings.size(); i++) {
                     Main.savings.get(i).accrueInterest();
                 }
-                for (int i = 0; i < Main.loans.size(); i++){
+                for (int i = 0; i < Main.loans.size(); i++) {
                     Main.loans.get(i).accrueInterest();
                 }
             }
+        });
+        processTransactionButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                for (int i = 0; i < Main.checks.size(); i++) {
+                    Check checky = Main.checks.get(i);
+                    if (checky.isProcessed().equals("false")) { // check was not processed
+                        double amount = checky.getAmount();
+                        String acID = checky.getCheckingAccID();
+                        for (int j = 0; j < Main.checkings.size(); j++) {
+                            if (acID.equals(Main.checkings.get(j).accountID)) {
+                                    boolean success = Main.checkings.get(j).withdrawal(amount);
+                                    System.out.println(success);
+                                    if (success) {
+                                        checky.setProcessed("true");
+                                    } else {
+                                        checky.setProcessed("canceled");
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+
+                }
+
         });
     }
 }
