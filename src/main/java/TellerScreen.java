@@ -159,7 +159,7 @@ public class TellerScreen {
         transferButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (TransferAmount.getText() != null) {
+                if (!TransferAmount.getText().equals("")) {
                     double amount = Double.parseDouble(TransferAmount.getText());
                     Account to = null;
                     Account from = null;
@@ -178,8 +178,9 @@ public class TellerScreen {
                         to.deposit(amount);
                         from.withdrawal(amount);
                     }
+                    accountModel.setValueAt(current.getBalance(), 0, 2);
                 }
-                accountModel.setValueAt(current.getBalance(), 0, 2);
+
             }
         });
         closeAccountButton.addActionListener(new ActionListener() {
