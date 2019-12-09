@@ -96,6 +96,11 @@ public class CustomerScreenAccounts {
                         if(accountModel.getRowCount() > 0) {
                             accountModel.removeRow(0);
                         }
+                        transactionButton.setVisible(false);
+                        transAmount.setVisible(false);
+                        transDesc.setVisible(false);
+                        amtLabel.setVisible(false);
+                        descLabel.setVisible(false);
                         accountModel.addRow(new Object[]{current.getType(), current.getAccountID(), current.getBalance()});
                         if(current.getType().equals("Gold Checking") || current.getType().equals("TMB Checking")){
                             transactionButton.setVisible(true);
@@ -193,18 +198,32 @@ public class CustomerScreenAccounts {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 if (accountModel.getValueAt(0, 0).equals("Credit Card")){
+                    String cdate = LocalDate.now().toString();
+                    cdate = cdate.substring(5, 7) + "/" + cdate.substring(8) + "/" + cdate.substring(0, 4);
                     Transaction tran = new Transaction(accountModel.getValueAt(0, 1).toString(),
                             Double.parseDouble(transAmount.getText()),
-                            LocalDate.now().toString(), transDesc.getText());
+                            cdate, transDesc.getText());
                     //TODO: credit limit check
-                    Main.transactions.add(tran);
-                    transactionModel.addRow(new Object[]{tran.getDate(), null, "true", tran.getAmount(), tran.getDescription()});
+                    String accNum = accountModel.getValueAt(0,1).toString();
+                    for (int i = 0; i < Main.loans.size(); i++){
+                        if (Main.loans.get(i).getAccountID().equals(accNum)){
+                            boolean success = Main.loans.get(i).withdrawal(Double.parseDouble(transAmount.getText()));
+                            if(success){
+                                Main.transactions.add(tran);
+                                transactionModel.addRow(new Object[]{tran.getDate(), null, "true", tran.getAmount(), tran.getDescription()});
+                                accountModel.setValueAt(Main.loans.get(i).balance,0,2);
+                            }
+                        }
+                    }
+
 
                 }else{
+                    String cdate = LocalDate.now().toString();
+                    cdate = cdate.substring(5, 7) + "/" + cdate.substring(8) + "/" + cdate.substring(0, 4);
                     int sizeChecks = Main.checks.size() -1;
                     int num = Integer.parseInt(Main.checks.get(sizeChecks).getCheckNumber()) + 1;
                     Check checky = new Check(""+num,
-                            accountModel.getValueAt(0,1).toString(), LocalDate.now().toString(),
+                            accountModel.getValueAt(0,1).toString(), cdate,
                             Double.parseDouble((transAmount.getText())),
                             "false");
                     Main.checks.add(checky);

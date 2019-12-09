@@ -18,7 +18,6 @@ public class Loan extends Account{
     protected LocalDate notifiedDate; //date bill sent
     protected LocalDate lastPaymentDate; //date of last payment made
     protected boolean flag = false;
-    protected ArrayList<String> creditHistory;
     protected LocalDate dateAccrued;
 
     //constructor
@@ -88,18 +87,15 @@ public class Loan extends Account{
                 balance += 75.00;
                 balance -= amount;
                 lastPaymentDate = LocalDate.now();
-                creditHistory.add("Payment of " +Double.toString(amount) +" on "+ LocalDate.now()+ "***late***");
             }else if(LocalDate.now().isBefore(beforeCharge)){  //no finance charge
                 flag = false;
                 balance -= amount;
                 lastPaymentDate = LocalDate.now();
-                creditHistory.add("Payment of " +Double.toString(amount) +" on "+ LocalDate.now());
             }else{                                             //on time with finance charge
                 flag = true;
                 //balance += balance*interestRate/100;
                 balance -= amount;
                 lastPaymentDate = LocalDate.now();
-                creditHistory.add("Payment of " +Double.toString(amount) +" on "+ LocalDate.now());
             }
         }
     }
