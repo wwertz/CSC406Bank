@@ -43,7 +43,6 @@ public class Main {
         LoginScreen initial = new LoginScreen();
 
         //testing
-        //stopPayment(checks, checkings,"202");
 
         //wait for system to close
         Runtime.getRuntime().addShutdownHook(new Thread(){

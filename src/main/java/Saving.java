@@ -52,7 +52,18 @@ public class Saving extends  Account{
                 return false;
             }
         }else if(type.equals("CD")){
-            //is CD and before mature date
+            Period diff = Period.between(CDdate, LocalDate.now());
+            int months = diff.getMonths();
+
+            if(LocalDate.now().isBefore(CDdate)){
+                //before mature date
+                System.out.println("It is before the CD mature date.");
+                balance -= amount;
+            }else{
+                //after mature date
+                System.out.println("It is after the CD mature date.");
+                balance -= amount;
+            }
             return false;
         }
         return true;
