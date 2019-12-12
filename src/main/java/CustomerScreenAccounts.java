@@ -121,8 +121,10 @@ public class CustomerScreenAccounts {
                                     currentL = Main.loans.get(k);
                                 }
                             }
+                            String ddate = currentL.getDueDate().toString();
+                            ddate = ddate.substring(5, 7) + "/" + ddate.substring(8) + "/" + ddate.substring(0, 4);
                             accountModel.addRow(new Object[]{current.getType(), current.getAccountID(),
-                                    current.getBalance(), currentL.getAmountDue(), currentL.getDueDate()});
+                                    current.getBalance(), currentL.getAmountDue(), ddate});
                             transactionButton.setVisible(true);
                             transAmount.setVisible(true);
                             transDesc.setVisible(true);
@@ -142,8 +144,10 @@ public class CustomerScreenAccounts {
                                     currentL = Main.loans.get(k);
                                 }
                             }
+                            String ddate = currentL.getDueDate().toString();
+                            ddate = ddate.substring(5, 7) + "/" + ddate.substring(8) + "/" + ddate.substring(0, 4);
                             accountModel.addRow(new Object[]{current.getType(), current.getAccountID(),
-                                    current.getBalance(), currentL.getAmountDue(), currentL.getDueDate()});
+                                    current.getBalance(), currentL.getAmountDue(), ddate});
                         }
                     }//add account info to tables
                 }//search customer accounts for selected account
