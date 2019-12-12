@@ -53,6 +53,21 @@ public class CreateAccountAndCust {
             @Override
             public void actionPerformed(ActionEvent e) {
                 errorMessage.setText("");
+                lastNameField.setText("");
+                lastNameField.setEditable(true);
+                firstNameField.setText("");
+                firstNameField.setEditable(true);
+                addressField.setText("");
+                addressField.setEditable(true);
+                cityField.setText("");
+                cityField.setEditable(true);
+                statetField.setText("");
+                statetField.setEditable(true);
+                zipField.setText("");
+                zipField.setEditable(true);
+                ATM.setText(null);
+                pinField.setText(null);
+                backupAccount.setText(null);
                 for(int i = 0; i < Main.customers.size(); i++){
                     if (ssnField.getText().equals(Main.customers.get(i).getSsn())){
                         exists = true;
@@ -73,23 +88,7 @@ public class CreateAccountAndCust {
                         pinField.setText(null);
                         backupAccount.setText(null);
                     }//customer exists, fill in info
-                    else{
-                        lastNameField.setText("");
-                        lastNameField.setEditable(true);
-                        firstNameField.setText("");
-                        firstNameField.setEditable(true);
-                        addressField.setText("");
-                        addressField.setEditable(true);
-                        cityField.setText("");
-                        cityField.setEditable(true);
-                        statetField.setText("");
-                        statetField.setEditable(true);
-                        zipField.setText("");
-                        zipField.setEditable(true);
-                        ATM.setText(null);
-                        pinField.setText(null);
-                        backupAccount.setText(null);
-                    }
+
                 }//see if customer exists
             }
         });
