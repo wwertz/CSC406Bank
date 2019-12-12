@@ -1,6 +1,8 @@
 import java.time.LocalDate;
 
-//subclasses Loan, Checking and Saving
+/**
+ * This is an abstract class for Accounts
+ */
 public abstract class Account {
 
     protected String accountID;
@@ -10,7 +12,9 @@ public abstract class Account {
     protected String type;
     protected String dateAccrued;
 
-    //constructor
+    /**
+     * Constructor for the Account object
+     */
     public Account(String accountID, String custID, double balance, String type, String dateAccrued) {
         this.accountID = accountID;
         this.custID = custID;
@@ -19,7 +23,9 @@ public abstract class Account {
         this.dateAccrued = dateAccrued;
     }
 
-    //getter and setters
+    /**
+     * Setters and Getters for the Account object.
+     */
     public String getAccountID() {return accountID;}
     public void setAccountID(String accountID) {this.accountID = accountID;}
     public String getCustID() {return custID;}

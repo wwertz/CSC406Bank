@@ -1,5 +1,8 @@
 import java.time.LocalDate;
 
+/**
+ * This is the class for a Check object.
+ */
 public class Check {
 
     private String checkNumber;
@@ -8,7 +11,9 @@ public class Check {
     private double amount;
     private String processed;
 
-    //constructor
+    /**
+     * Constructor for the Check object.
+     */
     public Check(String checkNumber, String checkingAccID, String date, double amount, String processed) {
         this.checkNumber = checkNumber;
         this.checkingAccID = checkingAccID;
@@ -17,6 +22,9 @@ public class Check {
         this.date = date;
     }
 
+    /**
+     * @return toString
+     */
     @Override
     public String toString() {
         return checkNumber + ',' +
@@ -26,7 +34,9 @@ public class Check {
                 processed;
     }
 
-    //getter and setter
+    /**
+     * Getters and Setter for the Check object.
+     */
     public String getCheckingAccID() {return checkingAccID;}
     public String getCheckNumber() {return checkNumber;}
     public String getDate() {return date;}

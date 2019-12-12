@@ -4,7 +4,12 @@ import java.io.PrintWriter;
 import java.time.*;
 
 //********************************still needs interest****************************************8
+//TODO does this comment need to be removed?
 
+
+/**
+ * TODO
+ */
 public class Saving extends  Account{
 
     protected boolean isCD;
@@ -14,6 +19,10 @@ public class Saving extends  Account{
     protected LocalDate dateAccrued;
     protected double initBal;
 
+    /**
+     * Constructor for the Saving account Object
+     * TODO explain
+     */
     public Saving( String custID, String accountID, double initBal, double balance, double interestRate, String dateOpened, boolean isCD, String CDdate, String type, String dateAccrued) {
         super(accountID, custID, balance, type, dateAccrued);
         if(dateOpened.length()>4)
@@ -30,16 +39,38 @@ public class Saving extends  Account{
         this.initBal = initBal;
     }
 
+
+    /**
+     * accrueInterest function
+     *
+     * This function does some math that adds the yearly amount of interest accrued to the current balance
+     */
     public void accrueInterest(){
         balance = balance+(balance*(interestRate/12));
     }
 
-    //deposit
+
+    /**
+     * deposit function
+     *
+     * This function takes the an AMOUNT of money and adds it to the total balance of the savings account.
+     *
+     * @param amount / double money
+     */
     public void deposit(double amount){
         balance += amount;
     }
 
-    //withdrawal
+
+    /**
+     * withdrawal function
+     *
+     * TODO explain
+     *
+     *
+     * @param amount / double money
+     * @return / boolean
+     */
     public boolean withdrawal(double amount){
         //check amount vs balance
         if(type.equals("Savings")){
@@ -58,6 +89,15 @@ public class Saving extends  Account{
         return true;
     }
 
+
+    /**
+     * toString function
+     *
+     * TODO explain
+     *
+     *
+     * @return toString
+     */
     public String toString() {
         String date;
         if(dateOpened != null){
@@ -96,7 +136,10 @@ public class Saving extends  Account{
                         aDate;
     }
 
-    //getters and setters
+
+    /**
+     * Setters and Getters for the Savings account object
+     */
     public LocalDate getCDdate() {return CDdate;}
     public void setCDdate(LocalDate CDdate) {this.CDdate = CDdate;}
     public double getInterestRate() {return interestRate;}

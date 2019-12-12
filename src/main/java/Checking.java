@@ -4,9 +4,15 @@ import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/**
+ *
+ * This class is for the Checking account object.
+ *
+ */
 public class Checking extends  Account{
 
     //********************************still needs interest****************************************8
+    //TODO does this comment need to be removed?
 
     protected boolean hasBackup;
     protected String backupID; //saving account ID
@@ -15,7 +21,10 @@ public class Checking extends  Account{
     protected Saving backup;
     protected LocalDate dateAccrued;
 
-    //constructor
+    /**
+     * Constructor for Checking Account object.
+     * TODO explain what the if statement is doing
+     */
     public Checking(String custID, String accountID, double balance, String dateOpened, boolean hasBackup, String backupID, int overdrafts, String type, String dateAccrued) {
         super(accountID, custID, balance, type, dateAccrued);
         if(dateOpened.length()>4)
@@ -31,14 +40,26 @@ public class Checking extends  Account{
 
     }
 
+    /**
+     * TODO not called
+     */
     public void accrueInterest(){
         if(type.equals("g")){
 
         }
-        //cannot access interest variable for this class, will need help on this  -Sam
+        //cannot access interest variable for this class, will need help on this  -Sam //TODO
     }
 
-    //deposit and check to see if upgrade or downgrade
+
+
+    /**
+     * deposit function
+     *
+     * The function that is responsible for taking the
+     *
+     * @param amount / double money
+     */
+    //deposit and check to see if upgrade or downgrade TODO explain
     public void deposit(double amount){
         balance += amount;
         checkType();
@@ -48,7 +69,14 @@ public class Checking extends  Account{
             balance -= .50;
     }
 
-    //withdrawal
+    /**
+     * withdrawl function
+     *
+     * TODO
+     *
+     * @param amount / double money
+     * @return / boolean TODO 1-2 word description
+     */
     public boolean withdrawal(double amount){
         //check amount vs balance
         boolean success;
@@ -56,7 +84,7 @@ public class Checking extends  Account{
             System.out.println("Not enough in account. Checking for backup");
 
             //check for backup;
-            if(hasBackup==true){
+            if(hasBackup){
 
                 for(int i=0; i<Main.savings.size(); i++){
                     if(this.backupID.equals(Main.savings.get(i).getAccountID())){
@@ -92,7 +120,13 @@ public class Checking extends  Account{
         return success;
     }
 
-    //check type
+    /**
+     * checkType function
+     *
+     * TODO
+     *
+     * @return / String type
+     */
     public String checkType(){
         if(balance>=1000){
             return type = "Gold Checking";
@@ -101,6 +135,13 @@ public class Checking extends  Account{
         }
     }
 
+    /**
+     * toString function
+     *
+     * TODO explaib
+     *
+     * @return toString
+     */
     @Override
     public String toString() {
         String date;
@@ -131,11 +172,13 @@ public class Checking extends  Account{
                         aDate;
     }
 
+
+    /**
+     * Setters and Getters for Checking account object
+     */
     public boolean isHasBackup() {return hasBackup;}
     public void setHasBackup(boolean hasBackup) {this.hasBackup = hasBackup;}
-    public void setBackupID(String backupID) {
-        this.backupID = backupID;
-    }
+    public void setBackupID(String backupID) { this.backupID = backupID; }
     public String getBackupID() {return backupID;}
     public int getOverdrafts() {return overdrafts;}
 }//end of Checking

@@ -1,5 +1,3 @@
-//Customer screen
-
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
@@ -9,6 +7,11 @@ import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ *
+ * This class is for the Loan object.
+ *
+ */
 public class Loan extends Account{
 
     protected double initialBalance;
@@ -21,6 +24,12 @@ public class Loan extends Account{
     protected LocalDate dateAccrued;
 
     //constructor
+
+    /**
+     * Constructor for the Loan object
+     *
+     * TODO explain
+     */
     public Loan(String custID, String accountID, double initialBalance, double balance, double interestRate,
                 String dueDate, String notifiedDate, double amountDue, String lastPaymentDate, boolean flag, String type, String dateAccrued) {
         super(accountID, custID, balance, type, dateAccrued);
@@ -42,11 +51,24 @@ public class Loan extends Account{
                     Integer.parseInt(dateAccrued.substring(0,2)), Integer.parseInt(dateAccrued.substring(3,5)));
     }
 
+
+    /**
+     * accrueInterest function
+     *
+     * This function does some math that adds the yearly amount of interest accrued to the current balance
+     */
     public void accrueInterest(){
 
         balance = balance+(balance*(interestRate/12));
     }
 
+
+    /**
+     * postBill function
+     *
+     * This function
+     * TODO is never used ??
+     */
     public void postBill() {
         if (type.equals("Long Term Loan")) {
             amountDue = balance * .025;
@@ -61,7 +83,14 @@ public class Loan extends Account{
             dueDate = LocalDate.now().plusMonths(1);
         }
     }
-    //make a payment
+
+
+    /**
+     * This function does
+     * TODO explain
+     *
+     * @param amount / double money
+     */
     @Override
     public void deposit(double amount){
         //check to see if late
@@ -99,6 +128,17 @@ public class Loan extends Account{
             }
         }
     }
+
+
+    /**
+     * withdrawal function
+     *
+     * This function
+     *  TODO
+     *
+     * @param amount / double money
+     * @return / boolean
+     */
     @Override
     public boolean withdrawal(double amount) {
         boolean result = true;
@@ -110,6 +150,15 @@ public class Loan extends Account{
         }
         return result;
     }
+
+    /**
+     * toString function
+     *
+     * TODO
+     *
+     *
+     * @return toString
+     */
     @Override
     public String toString() {
         //convert dates back into strings formatted in the database
@@ -160,6 +209,10 @@ public class Loan extends Account{
                 aDate;
     }
 
+    /**
+     * Constructor for JSONLoantoTXT
+     * TODO explain
+     */
     public void JSONLoanToTxt(String custID, String accountID, double initialBalance, double balance, double interestRate,
                               String dueDate, String notifiedDate, double amountDue, String lastPaymentDate, boolean flag, char type){
         JSONObject obj = new JSONObject();
@@ -184,6 +237,12 @@ public class Loan extends Account{
         }
     }
 
+    /**
+     * JSONTxtToLoan function
+     * TODO
+     *
+     * @param AID / int
+     */
     @SuppressWarnings("unchecked")
     public void JSONTxtToLoan(int AID) {
         JSONParser parser = new JSONParser();
@@ -209,7 +268,10 @@ public class Loan extends Account{
             e.printStackTrace();
         }
     }
-    //getter and setter
+
+    /**
+     * Setters and Getters
+     */
     public double getInitialBalance() {return initialBalance;}
     public double getInterestRate() {return interestRate;}
     public void setInterestRate(double interestRate) {this.interestRate = interestRate;}
