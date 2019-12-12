@@ -29,6 +29,7 @@ public class CustomerScreenAccounts {
     private JMenuBar menu;
     private ArrayList<Account> accountList = new ArrayList<>();
     private Account current = null;
+    private Loan currentL = null;
     public CustomerScreenAccounts(String ssn) {
         menu = new JMenuBar();
         logout = new JMenuItem("Logout");
@@ -76,6 +77,8 @@ public class CustomerScreenAccounts {
         accountModel.addColumn("Account Type");
         accountModel.addColumn("Account ID");
         accountModel.addColumn("Balance");
+        accountModel.addColumn("Amount Due");
+        accountModel.addColumn("Due Date");
         accountInfo.setModel(accountModel);
         DefaultTableModel transactionModel = new DefaultTableModel();
         transactionModel.addColumn("Date");
@@ -96,8 +99,9 @@ public class CustomerScreenAccounts {
                         if(accountModel.getRowCount() > 0) {
                             accountModel.removeRow(0);
                         }
-                        accountModel.addRow(new Object[]{current.getType(), current.getAccountID(), current.getBalance()});
                         if(current.getType().equals("Gold Checking") || current.getType().equals("TMB Checking")){
+                            accountModel.addRow(new Object[]{current.getType(), current.getAccountID(),
+                                    current.getBalance(), null, null});
                             transactionButton.setVisible(true);
                             transAmount.setVisible(true);
                             transDesc.setVisible(true);
@@ -112,6 +116,13 @@ public class CustomerScreenAccounts {
                             }//search checks table for checks from current account
                         }//extra steps for checking accounts
                         if(current.getType().equals("Credit Card")){
+                            for (int k = 0; k < Main.loans.size(); k ++){
+                                if (Main.loans.get(k).getAccountID().equals(current.accountID)){
+                                    currentL = Main.loans.get(k);
+                                }
+                            }
+                            accountModel.addRow(new Object[]{current.getType(), current.getAccountID(),
+                                    current.getBalance(), currentL.getAmountDue(), currentL.getDueDate()});
                             transactionButton.setVisible(true);
                             transAmount.setVisible(true);
                             transDesc.setVisible(true);
@@ -124,6 +135,16 @@ public class CustomerScreenAccounts {
                                 }//add check to table
                             }//search checks table for CC from current account
                         }//extra steps for CC loan accounts
+                        if(current.getType().equals("Short Term Loan") || current.getType().equals("Long Term Loan")) {
+                            for (int k = 0; k < Main.loans.size(); k++) {
+                                System.out.println(k);
+                                if (Main.loans.get(k).getAccountID().equals(current.accountID)) {
+                                    currentL = Main.loans.get(k);
+                                }
+                            }
+                            accountModel.addRow(new Object[]{current.getType(), current.getAccountID(),
+                                    current.getBalance(), currentL.getAmountDue(), currentL.getDueDate()});
+                        }
                     }//add account info to tables
                 }//search customer accounts for selected account
             }//selectButton action

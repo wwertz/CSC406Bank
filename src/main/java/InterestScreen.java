@@ -23,6 +23,7 @@ public class InterestScreen {
     private JLabel ccredit;
     private JButton accrueInterest;
     private JButton processTransactionButton;
+    private JButton postBillsButton;
     private JMenuItem logout;
     private JMenuBar menu;
 
@@ -160,6 +161,14 @@ public class InterestScreen {
 
                 }
 
+        });
+        postBillsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for (int i = 0; i < Main.loans.size(); i++){
+                    Main.loans.get(i).postBill();
+                }
+            }
         });
     }
 }

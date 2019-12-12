@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 public class ManagerSelectFunction {
     private JButton accountLookupButton;
     private JButton openAccountButton;
-    private JButton interestRatesButton;
+    private JButton globalFunctionsButton;
     private JPanel panel1;
     private JButton backButton;
     private JMenuItem logout;
@@ -38,7 +38,7 @@ public class ManagerSelectFunction {
 
             }
         });
-        interestRatesButton.addActionListener(new ActionListener() {
+        globalFunctionsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 managerScreen.dispose();
