@@ -31,6 +31,13 @@ public class Checking extends  Account{
 
     }
 
+    public void accrueInterest(){
+        if(type.equals("g")){
+
+        }
+        //cannot access interest variable for this class, will need help on this  -Sam
+    }
+
     //deposit and check to see if upgrade or downgrade
     public void deposit(double amount){
         balance += amount;
