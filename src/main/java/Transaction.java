@@ -1,5 +1,8 @@
 import java.time.LocalDate;
 
+/**
+ * This class is for the Transaction object
+ */
 public class Transaction {
 
     protected String account;
@@ -8,7 +11,9 @@ public class Transaction {
     protected String description;
 
 
-    //constructor
+    /**
+     * Constructor for the Transaction object.
+     */
     public Transaction(String account, double amount, String date, String description) {
         this.account = account;
         this.amount = amount;
@@ -16,6 +21,9 @@ public class Transaction {
         this.description = description;
     }
 
+    /**
+     * @return toString
+     */
     @Override
     public String toString() {
         return
@@ -25,7 +33,9 @@ public class Transaction {
                 description;
     }
 
-    //getters
+    /**
+     * Setters and Getters for the Transaction object.
+     */
     public String getAccount() {return account;}
     public double getAmount() {return amount;}
     public String getDate() {return date;}
