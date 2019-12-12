@@ -133,6 +133,9 @@ public class InterestScreen {
                 for (int i = 0; i < Main.loans.size(); i++) {
                     Main.loans.get(i).accrueInterest();
                 }
+                for (int i = 0; i < Main.checkings.size(); i++) {
+                    Main.checkings.get(i).accrueInterest();
+                }
             }
         });
         processTransactionButton.addActionListener(new ActionListener() {

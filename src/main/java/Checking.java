@@ -1,8 +1,4 @@
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.PrintWriter;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -10,9 +6,6 @@ import java.time.format.DateTimeFormatter;
  *
  */
 public class Checking extends  Account{
-
-    //********************************still needs interest****************************************8
-    //TODO does this comment need to be removed?
 
     protected boolean hasBackup;
     protected String backupID; //saving account ID
@@ -44,10 +37,16 @@ public class Checking extends  Account{
      * TODO not called
      */
     public void accrueInterest(){
-        if(type.equals("g")){
-
+        if(type.equals("Gold Checking")) {
+            if (dateAccrued == null || dateAccrued.getYear() <= LocalDate.now().getYear() && dateAccrued.getMonthValue() < LocalDate.now().getMonthValue() ||
+                    dateAccrued.getYear() <= LocalDate.now().getYear() && (dateAccrued.getMonthValue() == 12 && LocalDate.now().getMonthValue() == 1)) {
+                balance = balance + (balance * (Main.savingsInterest / 12));
+                dateAccrued = LocalDate.now();
+            } else {
+                System.out.println("Interest already accrued");
+            }
         }
-        //cannot access interest variable for this class, will need help on this  -Sam //TODO
+
     }
 
 

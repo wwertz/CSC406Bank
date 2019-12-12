@@ -1,11 +1,4 @@
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.PrintWriter;
 import java.time.*;
-
-//********************************still needs interest****************************************8
-//TODO does this comment need to be removed?
-
 
 /**
  * TODO
@@ -46,9 +39,15 @@ public class Saving extends  Account{
      * This function does some math that adds the yearly amount of interest accrued to the current balance
      */
     public void accrueInterest(){
-        balance = balance+(balance*(interestRate/12));
-    }
+        if(dateAccrued==null || dateAccrued.getYear()<=LocalDate.now().getYear() && dateAccrued.getMonthValue()<LocalDate.now().getMonthValue() ||
+                dateAccrued.getYear()<=LocalDate.now().getYear() && (dateAccrued.getMonthValue()==12 && LocalDate.now().getMonthValue()==1)){
+            balance = balance+(balance*(interestRate/12));
+            dateAccrued = LocalDate.now();
+        }else{
+            System.out.println("Interest already accrued");
+        }
 
+    }
 
     /**
      * deposit function
