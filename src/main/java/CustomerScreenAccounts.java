@@ -115,7 +115,7 @@ public class CustomerScreenAccounts {
                                 }//add check to table
                             }//search checks table for checks from current account
                         }//extra steps for checking accounts
-                        if(current.getType().equals("Credit Card")){
+                        else if(current.getType().equals("Credit Card")){
                             for (int k = 0; k < Main.loans.size(); k ++){
                                 if (Main.loans.get(k).getAccountID().equals(current.accountID)){
                                     currentL = Main.loans.get(k);
@@ -137,7 +137,7 @@ public class CustomerScreenAccounts {
                                 }//add check to table
                             }//search checks table for CC from current account
                         }//extra steps for CC loan accounts
-                        if(current.getType().equals("Short Term Loan") || current.getType().equals("Long Term Loan")) {
+                        else if(current.getType().equals("Short Term Loan") || current.getType().equals("Long Term Loan")) {
                             for (int k = 0; k < Main.loans.size(); k++) {
                                 System.out.println(k);
                                 if (Main.loans.get(k).getAccountID().equals(current.accountID)) {
@@ -148,7 +148,8 @@ public class CustomerScreenAccounts {
                             ddate = ddate.substring(5, 7) + "/" + ddate.substring(8) + "/" + ddate.substring(0, 4);
                             accountModel.addRow(new Object[]{current.getType(), current.getAccountID(),
                                     current.getBalance(), currentL.getAmountDue(), ddate});
-                        }
+                        }else accountModel.addRow(new Object[]{current.getType(), current.getAccountID(),
+                                current.getBalance(), null, null});
                     }//add account info to tables
                 }//search customer accounts for selected account
             }//selectButton action
