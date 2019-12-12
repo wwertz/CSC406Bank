@@ -58,10 +58,15 @@ public class Loan extends Account{
      * This function does some math that adds the yearly amount of interest accrued to the current balance
      */
     public void accrueInterest(){
+        if(dateAccrued==null || dateAccrued.getYear()<=LocalDate.now().getYear() && dateAccrued.getMonthValue()<LocalDate.now().getMonthValue() ||
+                dateAccrued.getYear()<=LocalDate.now().getYear() && (dateAccrued.getMonthValue()==12 && LocalDate.now().getMonthValue()==1)){
+            balance = balance+(balance*(interestRate/12));
+            dateAccrued = LocalDate.now();
+        }else{
+            System.out.println("Interest already accrued");
+        }
 
-        balance = balance+(balance*(interestRate/12));
     }
-
 
     /**
      * postBill function
