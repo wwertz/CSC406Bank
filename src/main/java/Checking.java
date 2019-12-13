@@ -34,7 +34,9 @@ public class Checking extends  Account{
     }
 
     /**
-     * TODO not called
+     * accrueInterest function
+     *
+     * TODO explain
      */
     public void accrueInterest(){
         if(type.equals("Gold Checking")) {
@@ -54,11 +56,11 @@ public class Checking extends  Account{
     /**
      * deposit function
      *
-     * The function that is responsible for taking the
+     * The function that is responsible for taking the taking an AMOUNT of money and adding it to the current balance.
+     * It then checks the type of check that is being deposited and subtracts a 50 cent fee.
      *
      * @param amount / double money
      */
-    //deposit and check to see if upgrade or downgrade TODO explain
     public void deposit(double amount){
         balance += amount;
         checkType();
@@ -69,12 +71,16 @@ public class Checking extends  Account{
     }
 
     /**
-     * withdrawl function
+     * withdrawal function
      *
-     * TODO
+     * This function takes a certain AMOUNT of money and subtracts it from the total balance.
+     * It checks if the amount to be withdrawn is more than the current balance, and thats true, it checks if there is
+     * a backup account and withdraws from that.
+     * If there is not a backup account, the withdrawal is a failure and a penalty is subtracted from the balance.
+     * If the balance is more than the amount, it simply subtracts from the balance, and checks whether there is a fee.
      *
      * @param amount / double money
-     * @return / boolean TODO 1-2 word description
+     * @return / boolean success of withdrawal
      */
     public boolean withdrawal(double amount){
         //check amount vs balance
@@ -122,7 +128,9 @@ public class Checking extends  Account{
     /**
      * checkType function
      *
-     * TODO
+     * This function checks whether the balance is is greater than or equal to 1000 dollars, and if it's true,
+     * then the type of the checking account is "Gold Checking". If it's false, the type of the checking account
+     * is "TMB Checking".
      *
      * @return / String type
      */
@@ -137,7 +145,10 @@ public class Checking extends  Account{
     /**
      * toString function
      *
-     * TODO explaib
+     * This toString function prints out one of three things.
+     * It can print the data that an account was opened.
+     * It can print the data that an account is to accrue interest.
+     * It can print the account data of the checking account.
      *
      * @return toString
      */

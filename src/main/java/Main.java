@@ -1,17 +1,12 @@
  /**
   * CSC 406 Banking Project
-  * Group 2 ? TODO
+  * Group 2
   * Team Leader: Jake Blessing
   * Wayne Wertz
   * Benjamin Oliphant
   * Sam Poirer
  **/
 
-/**
- *
- * MAIN.java imports of important tools
- *
- **/
 
 import java.io.*;
 import java.time.LocalDate;
@@ -30,11 +25,6 @@ import Users.*;
 public class Main {
 
     /**
-     * TODO idk it's purpose
-     **/
-    public static boolean manager = false;
-
-    /**
      * Declares the ArrayLists that will store important banking information in memory while the GUI runs.
      **/
     public static ArrayList<Customer> customers = new ArrayList<>();
@@ -44,17 +34,13 @@ public class Main {
     public static ArrayList<Loan> loans = new ArrayList<>();
     public static ArrayList<Transaction> transactions = new ArrayList<>();
 
-    /**
-     * declares / initial value for interest rates
-     *
-     * TODO maybe more detail?
-     *
-     **/
+    // declares and sets defaults for interest rate before read from database
     public static double savingsInterest = 0.1;
     public static double stlInterest = 0.1;
     public static double ltlInterest = 0.1;
     public static double ccInterest = 0.1;
     public static double cdInterest = 0.1;
+    public static boolean manager = false;
 
 
     public static void main(String[] args) throws IOException {

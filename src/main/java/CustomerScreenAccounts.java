@@ -222,7 +222,7 @@ public class CustomerScreenAccounts {
                     Transaction tran = new Transaction(accountModel.getValueAt(0, 1).toString(),
                             Double.parseDouble(transAmount.getText()),
                             LocalDate.now().toString(), transDesc.getText());
-                    //TODO: credit limit check
+                    //T ODO: credit limit check
                     Main.transactions.add(tran);
                     transactionModel.addRow(new Object[]{tran.getDate(), null, "true", tran.getAmount(), tran.getDescription()});
 

@@ -1,7 +1,7 @@
 import java.time.*;
 
 /**
- * TODO
+ * This class is for the Savings account object.
  */
 public class Saving extends  Account{
 
@@ -64,8 +64,10 @@ public class Saving extends  Account{
     /**
      * withdrawal function
      *
-     * TODO explain
-     *
+     * This function checks whether the account is a normal Savings account or a CD.
+     * If it's a Savings account, it checks if the amount to be withdrawn is less than the balance, and if true,
+     * subtracts the amount. If the amount is greater than the balance, it fails to withdrawal.
+     * If its a CD, it checks whether the CCD has matured or not, and subtracts the amount from the balance.
      *
      * @param amount / double money
      * @return / boolean
@@ -103,8 +105,11 @@ public class Saving extends  Account{
     /**
      * toString function
      *
-     * TODO explain
-     *
+     * This toString function prints out one of several things.
+     * It can print the Savings account data of when it was opened.
+     * It can print the CD account data of when the date was created.
+     * It can print the account data of when to accrue.
+     * It can print all the data associated with the Savings account.
      *
      * @return toString
      */

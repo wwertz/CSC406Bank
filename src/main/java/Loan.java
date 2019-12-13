@@ -4,9 +4,7 @@ import java.io.PrintWriter;
 import java.time.LocalDate;
 
 /**
- *
  * This class is for the Loan object.
- *
  */
 public class Loan extends Account{
 
@@ -67,8 +65,10 @@ public class Loan extends Account{
     /**
      * postBill function
      *
-     * This function
-     * TODO is never used ??
+     * This function checks whether the type of Loan is a Long Term Loan, a Credit Card, or other.
+     * If it's a Long Term Loan, it calculates an amount to be due and sets the due date, 1 month from current date.
+     * If it's a Credit Card, the balance is due at in 10 days.
+     * If it's other, it calculates an amount to be due and sets the due date, 1 month from current date.
      */
     public void postBill() {
         if (type.equals("Long Term Loan")) {
@@ -77,9 +77,7 @@ public class Loan extends Account{
         } else if (type.equals("Credit Card")){
             amountDue = balance;
             dueDate = LocalDate.now().plusDays(10);
-        }
-
-        else {
+        } else {
             amountDue = balance * .05;
             dueDate = LocalDate.now().plusMonths(1);
         }
@@ -134,8 +132,8 @@ public class Loan extends Account{
     /**
      * withdrawal function
      *
-     * This function
-     *  TODO
+     * This function checks whether it's a credit card, and if that's true, it checks whether the balance plus the
+     * amount to be withdrawn is less than the initial balance of the loan, and if true returns true.
      *
      * @param amount / double money
      * @return / boolean
@@ -155,8 +153,13 @@ public class Loan extends Account{
     /**
      * toString function
      *
-     * TODO
-     *
+     * This toString function prints out one of several things.
+     * It can print the loan data that a loan is due.
+     * It can print the loan data that of a loan notification date of when it's due.
+     * It can print the loan data of the checking account.
+     * It can print the loan data of the last payment.
+     * It can print the loan data data of accrual of the loan.
+     * It can print all the loan data.
      *
      * @return toString
      */
