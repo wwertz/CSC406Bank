@@ -6,6 +6,39 @@ import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ * This Java class uses Java Swing.
+ *
+ * This class is for the CustomerScreenAccounts screen.
+ *
+ * The Customer is presented with a drop down ComboBox with the numbers of their associated accounts.
+ * Pressing the "Select" button selects the numbered account, and reads all the information associated with that
+ * account in the below fields.
+ *
+ * Pressing the "Transfer" button executes a transfer of money from the account number in the first drop down ComboBox
+ * to the account number in the second drop down ComboBox. The amount of money to be transfered is determined by the
+ * amount that the customer puts into the panel below "Amount" on the GUI screen.
+ *
+ * If a check has been processed it is set "True", if a check has not yet been processed it is set"False"
+ * Pressing the "Cancel Check" button changes the state of any checks that are currently set "False" to "Canceled".
+ *
+ * The fields at the lower half of the GUI are filled with the corresponding data from the account number that was
+ * in the drop down ComboBox when the "Select" button was pressed.
+ *
+ * The fields show the currently selected account type, the associated account number, the account balance,
+ * the amount due / owed to the bank, and the data that the owed amount is due to be paid without penalty.
+ *
+ * The bottom of the GUI displays the history and past transactions of the selected account type.
+ * It displays the data the transaction was made, the transaction number, whether the transaction was processed,
+ * the amount of money in the transaction, and a description of the transaction.
+ *
+ * Pressing the "Back" button sends the GUI back to the "ATMLogin" screen.
+ *
+ * Pressing the "Logout" button sends the GUI back to the initial "LoginScreen" screen.
+ *
+ * Upon exiting the GUI, the system will write all the data in live memory to the database, and the program
+ * will terminate.
+ */
 public class CustomerScreenAccounts {
     private JComboBox Accounts;
     private JButton backButton;
@@ -222,7 +255,7 @@ public class CustomerScreenAccounts {
                     Transaction tran = new Transaction(accountModel.getValueAt(0, 1).toString(),
                             Double.parseDouble(transAmount.getText()),
                             LocalDate.now().toString(), transDesc.getText());
-                    //TODO: credit limit check
+                    //T ODO: credit limit check
                     Main.transactions.add(tran);
                     transactionModel.addRow(new Object[]{tran.getDate(), null, "true", tran.getAmount(), tran.getDescription()});
 

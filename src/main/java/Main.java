@@ -1,17 +1,16 @@
  /**
   * CSC 406 Banking Project
-  * Group 2 ? TODO
+  * Group 2
   * Team Leader: Jake Blessing
   * Wayne Wertz
   * Benjamin Oliphant
   * Sam Poirer
- **/
+  *
+  * CSC406
+  * Professor Pickett
+  * 12-13-2019
+  **/
 
-/**
- *
- * MAIN.java imports of important tools
- *
- **/
 
 import java.io.*;
 import java.time.LocalDate;
@@ -21,18 +20,8 @@ import Users.*;
 
 /**
  * MAIN driver class for the Banking Project
- * Executing main runs the GUI
- *
- * TODO
- *
  **/
-
 public class Main {
-
-    /**
-     * TODO idk it's purpose
-     **/
-    public static boolean manager = false;
 
     /**
      * Declares the ArrayLists that will store important banking information in memory while the GUI runs.
@@ -44,17 +33,13 @@ public class Main {
     public static ArrayList<Loan> loans = new ArrayList<>();
     public static ArrayList<Transaction> transactions = new ArrayList<>();
 
-    /**
-     * declares / initial value for interest rates
-     *
-     * TODO maybe more detail?
-     *
-     **/
+    // declares and sets defaults for interest rate before read from database
     public static double savingsInterest = 0.1;
     public static double stlInterest = 0.1;
     public static double ltlInterest = 0.1;
     public static double ccInterest = 0.1;
     public static double cdInterest = 0.1;
+    public static boolean manager = false;
 
 
     public static void main(String[] args) throws IOException {
@@ -302,35 +287,5 @@ public class Main {
         System.out.println("write " + source);
         out.close();
     }//end of writeData
-
-
-    /**
-     * stopPayment function
-     *
-     * The function that is responsible for
-     * TODO ask wayne about this. It's commented out above, and doesn't seem to be called anywhere else.
-     *
-     * @param list / ArrayList
-     * @param checking / ArrayList
-     * @param checkNumber / ArrayList
-     */
-    //still needs to charge the customer once we get data in // TODO validate this comment is old
-    public static void stopPayment(ArrayList<Check> list, ArrayList<Checking> checking, String checkNumber){
-        for(int i=0; i<list.size(); i++){
-            if(list.get(i).getCheckNumber().equals(checkNumber)){
-                if(list.get(i).isProcessed().equals("false")){
-                    System.out.println(list.get(i).getCheckNumber() + " Is removed and wont be processed");
-                    for(int j=0; j<checking.size(); j++){
-                        //find the right account to charge
-                        if(list.get(i).getCheckingAccID().equals(checking.get(j).getAccountID()))
-                            checking.get(j).withdrawal(15.00);
-                    }//end of for j
-                    list.remove(i);
-                }else{
-                    System.out.println(list.get(i) + "Was already processed");
-                }//end of for i
-            }
-        }
-    }//end of stopPayment
 
 }//end of Main Class

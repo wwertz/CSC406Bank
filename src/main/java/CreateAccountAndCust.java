@@ -5,6 +5,32 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
+/**
+ * This Java class uses Java Swing.
+ *
+ * This class is for the CreateAccountAndCust screen. This screen is accessible from the ManagerSelectScreen.
+ *
+ * This screen is the main administration screen for opening new accounts for new customers.
+ * The "Lookup SSN" button verifies whether the SSN entered into the text field does or doesn't belong to
+ * an already existing account in the system.
+ *
+ * The Last Name, First Name, Address, City, and State text fields collect information to be read into the system
+ * for creation of a new customer of the bank.
+ *
+ * The Acct Type drop down ComboBox allows the Manager to select what kind of account to create.
+ * The Account # text field allows the Manager to set the number for the account.
+ * The manager is able to set an another account to be an associated Backup Account, and is able to set
+ * the ATM bank card number, and the PIN.
+ *
+ * Pressing the "Create" button takes all of the filled information and saves it into memory as a new user
+ * in the system.
+ *
+ * Pressing the "Back" button sends the GUI back to the "ManagerSelectScreen".
+ *
+ * Upon exiting the GUI, the system will write all the data in live memory to the database, and the program
+ * will terminate.
+ */
 public class CreateAccountAndCust {
     private JButton lookupSSNButton;
     private JTextField ssnField;

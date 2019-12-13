@@ -3,6 +3,24 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
+/**
+ * This Java class uses Java Swing.
+ *
+ * This class is for the Login Page of the GUI. When the program is initially ran and the GUI opens, this is the
+ * screen that will open, and is the root page to go back to.
+ *
+ * This GUI interface has a "login" button, and a panel with a selection of 4 user types: Customer,ATM,Teller,Manager.
+ *
+ * Upon selecting and logging into ATM, the screen changes to the "ATMLogin" screen.
+ * Upon selecting and logging into Customer, the screen changes to the "CustomerScreenSSN" screen.
+ * Upon selecting and logging into Teller, the screen changes to the "EmpAccountLoopUp" screen.
+ * Upon selecting and logging into Manager, the screen changes to the "ManagerSelectFunction" screen.
+ *
+ * Upon exiting the GUI, the system will write all the data in live memory to the database, and the program
+ * will terminate.
+ *
+ */
 public class LoginScreen {
     private JPanel panel1;
     private JButton Login;

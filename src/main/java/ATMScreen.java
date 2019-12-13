@@ -4,6 +4,26 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+
+/**
+ * This Java class uses Java Swing.
+ *
+ * This class is for the ATM Screen for the customers. Upon entering a valid card number and PIN in the
+ * previous screen, ATMLogin, the customer enters this screen.
+ *
+ * The ATMScreen presents the user with the Account types associated with their account that are accessible from the
+ * ATM, the Account ID, and the current Balance of their account.
+ *
+ * Below near the center of the screen, there is a withdraw button, and a text field for the customer to type the
+ * amount they wish to withdraw from the system.
+ *
+ * Pressing the "Back" button sends the GUI back to the "ATMLogin" screen.
+ *
+ * Pressing the "Logout" button sends the GUI back to the initial "LoginScreen" screen.
+ *
+ * Upon exiting the GUI, the system will write all the data in live memory to the database, and the program
+ * will terminate.
+ */
 public class ATMScreen {
     private JTable accountInfo;
     private JButton withdrawButton;
