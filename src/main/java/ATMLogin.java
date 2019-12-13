@@ -3,6 +3,25 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * This Java class uses Java Swing.
+ *
+ * This class is for the ATM login. This screen is accessible by selecting "ATM" at the initial login page with the
+ * login drop down menu.
+ *
+ * This screen has a text field for the customer's card number, and a password field for the PIN. Both are required.
+ *
+ * Upon entering data into both fields, the user is expected to press the Enter button, where the system checks
+ * whether the data entered is valid. If it's invalid, the user is prompted to "Please retry".
+ *
+ * If the user successfully enters their information, the screen changes to the "ATMScreen.java" with the
+ * customer's checking account information.
+ *
+ * Pressing the "Cancel" button sends the GUI back to the initial "LoginScreen".
+ *
+ * Upon exiting the GUI, the system will write all the data in live memory to the database, and the program
+ * will terminate.
+ */
 public class ATMLogin {
     private JTextField cardNum;
     private JPasswordField PIN;

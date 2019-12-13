@@ -3,6 +3,29 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
+/**
+ * This Java class uses Java Swing.
+ *
+ * This class is for the InterestScreen. This screen is accessible from the ManagerSelectScreen.
+ *
+ * This screen is the main administration screen for all of the interests rates for Savings Accounts, CD's,
+ * Long and Short Term Loans, and for Credit Cards.
+ *
+ * For each of the interests there is an associated button that updates the default interest rates for new accounts,
+ * a text field for what the interest rate will be change to, and a decimal number for the current interest rate.
+ *
+ * The "Accrue Interest" button executes the accrueInterest button for all accounts in the database that
+ * have yet to be accrued.
+ *
+ * The "Process Transactions" button executes the functions that take transactions that are set to false,
+ * and subtracts the owed money and sets them to True.
+ *
+ * Pressing the "Back" button sends the GUI back to the "ManagerSelectScreen".
+ *
+ * Upon exiting the GUI, the system will write all the data in live memory to the database, and the program
+ * will terminate.
+ */
 public class InterestScreen {
     private JButton savingsButton;
     private JButton shortLoanButton;

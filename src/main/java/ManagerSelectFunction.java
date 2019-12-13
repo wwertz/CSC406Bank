@@ -3,6 +3,26 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
+/**
+ * This Java class uses Java Swing.
+ *
+ * This class is for the ManagerSelectFunction of the GUI. This screen is accessible by selecting "Manager"
+ * at the initial login page
+ *
+ * This GUI interface has three buttons for Manager level interfaces; Account Lookup, Open Account,
+ * and Global Functions
+ *
+ * Upon selecting "Account Lookup", the screen changes to the "EmpAccountLookup" screen.
+ * Upon selecting "Open Account", the screen changes to the "CreateAccountAndCust" screen.
+ * Upon selecting "Global Functions", the screen changes to the InterestScreen" screen.
+ *
+ * Pressing the "Back" button sends the GUI back to the initial "LoginScreen".
+ *
+ * Upon exiting the GUI, the system will write all the data in live memory to the database, and the program
+ * will terminate.
+ *
+ */
 public class ManagerSelectFunction {
     private JButton accountLookupButton;
     private JButton openAccountButton;

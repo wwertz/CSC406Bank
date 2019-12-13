@@ -3,6 +3,25 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
+/**
+ * This Java class uses Java Swing.
+ *
+ * This class is for the TellerScreen screen. This screen is accessible by selecting "Teller" at the initial login
+ * page with the login drop down menu.
+ *
+ * The Teller screen has two text fields, one for an Account number, and one for a Customer SSN.
+ * Only one of the two text fields are required to do a lookup of an account.
+ * Upon entering data into the text field, the Teller is expected to press the "Lookup" button to lookup a
+ * customer's account information.
+ *
+ * Pressing the "Lookup" button with valid customer information changes the GUI screen to the "TellerScreen".
+ *
+ * Pressing the "Cancel" button sends the GUI back to the initial "LoginScreen".
+ *
+ * Upon exiting the GUI, the system will write all the data in live memory to the database, and the program
+ * will terminate.
+ */
 public class EmpAccountLookup {
     private JPanel panel1;
     private JTextField accountNumTextField;
