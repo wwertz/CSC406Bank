@@ -5,7 +5,11 @@
   * Wayne Wertz
   * Benjamin Oliphant
   * Sam Poirer
- **/
+  *
+  * CSC406
+  * Professor Pickett
+  * 12-13-2019
+  **/
 
 
 import java.io.*;
@@ -16,12 +20,7 @@ import Users.*;
 
 /**
  * MAIN driver class for the Banking Project
- * Executing main runs the GUI
- *
- * TODO
- *
  **/
-
 public class Main {
 
     /**
