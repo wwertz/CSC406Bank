@@ -14,7 +14,7 @@ public class Saving extends  Account{
 
     /**
      * Constructor for the Saving account Object
-     * TODO explain
+     * If the dates are not null, they will be changed from String to LocalDate
      */
     public Saving( String custID, String accountID, double initBal, double balance, double interestRate, String dateOpened, boolean isCD, String CDdate, String type, String dateAccrued) {
         super(accountID, custID, balance, type, dateAccrued);

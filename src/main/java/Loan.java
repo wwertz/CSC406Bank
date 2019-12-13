@@ -22,7 +22,7 @@ public class Loan extends Account{
     /**
      * Constructor for the Loan object
      *
-     * TODO explain
+     * If the dates are not null, they will be changed from String to LocalDate
      */
     public Loan(String custID, String accountID, double initialBalance, double balance, double interestRate,
                 String dueDate, String notifiedDate, double amountDue, String lastPaymentDate, boolean flag, String type, String dateAccrued) {
@@ -85,8 +85,10 @@ public class Loan extends Account{
 
 
     /**
-     * This function does
-     * TODO explain
+     * Deposit is a function to enable a payment to loans and credit cards
+     * The type is checked to determine the path to take
+     * Dates are checked to determine if a payment is late. If late a fee is added to account
+     * If its late, the account will be flagged
      *
      * @param amount / double money
      */
@@ -97,13 +99,11 @@ public class Loan extends Account{
         if (type.equals("Long Term Loan") || type.equals("Short Term Loan")) {  //loans
             if(LocalDate.now().isAfter(dueDate)){               //late
                 flag = true;
-                //balance += balance*interestRate/100;
                 balance += 75.00;
                 balance -= amount;
                 lastPaymentDate = LocalDate.now();
             }else{                                             //not late
                 flag = false;
-                //balance += balance*interestRate/100;
                 balance -= amount;
                 lastPaymentDate = LocalDate.now();
             }
@@ -111,7 +111,6 @@ public class Loan extends Account{
             LocalDate beforeCharge = LocalDate.of(notifiedDate.getYear(), notifiedDate.getMonth(), 10);
             if(LocalDate.now().isAfter(dueDate)){               //late
                 flag = true;
-                //balance += balance*interestRate/100;
                 balance += 75.00;
                 balance -= amount;
                 lastPaymentDate = LocalDate.now();
@@ -121,7 +120,6 @@ public class Loan extends Account{
                 lastPaymentDate = LocalDate.now();
             }else{                                             //on time with finance charge
                 flag = true;
-                //balance += balance*interestRate/100;
                 balance -= amount;
                 lastPaymentDate = LocalDate.now();
             }

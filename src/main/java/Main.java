@@ -289,34 +289,4 @@ public class Main {
         out.close();
     }//end of writeData
 
-
-    /**
-     * stopPayment function
-     *
-     * The function that is responsible for
-     * TODO ask wayne about this. It's commented out above, and doesn't seem to be called anywhere else.
-     *
-     * @param list / ArrayList
-     * @param checking / ArrayList
-     * @param checkNumber / ArrayList
-     */
-    //still needs to charge the customer once we get data in // TODO validate this comment is old
-    public static void stopPayment(ArrayList<Check> list, ArrayList<Checking> checking, String checkNumber){
-        for(int i=0; i<list.size(); i++){
-            if(list.get(i).getCheckNumber().equals(checkNumber)){
-                if(list.get(i).isProcessed().equals("false")){
-                    System.out.println(list.get(i).getCheckNumber() + " Is removed and wont be processed");
-                    for(int j=0; j<checking.size(); j++){
-                        //find the right account to charge
-                        if(list.get(i).getCheckingAccID().equals(checking.get(j).getAccountID()))
-                            checking.get(j).withdrawal(15.00);
-                    }//end of for j
-                    list.remove(i);
-                }else{
-                    System.out.println(list.get(i) + "Was already processed");
-                }//end of for i
-            }
-        }
-    }//end of stopPayment
-
 }//end of Main Class

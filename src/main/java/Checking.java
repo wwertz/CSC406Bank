@@ -16,7 +16,7 @@ public class Checking extends  Account{
 
     /**
      * Constructor for Checking Account object.
-     * TODO explain what the if statement is doing
+     * If the dates are not null, they will be changed from String to LocalDate
      */
     public Checking(String custID, String accountID, double balance, String dateOpened, boolean hasBackup, String backupID, int overdrafts, String type, String dateAccrued) {
         super(accountID, custID, balance, type, dateAccrued);
@@ -36,7 +36,7 @@ public class Checking extends  Account{
     /**
      * accrueInterest function
      *
-     * TODO explain
+     * If dateAccrued is not current month, intrest will be added and date will be updated.
      */
     public void accrueInterest(){
         if(type.equals("Gold Checking")) {
