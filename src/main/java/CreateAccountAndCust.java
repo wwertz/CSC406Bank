@@ -189,41 +189,50 @@ public class CreateAccountAndCust {
                     if (accountType.getSelectedItem().equals("CD")) {
                         backup = false;
                         backupAccount.setText("null");
-                        LocalDate cdDate = LocalDate.now().plusYears(3);
+                        String cdDate = LocalDate.now().plusYears(3).toString();
+                        cdDate = cdDate.substring(5, 7) + "/" + cdDate.substring(8) + "/" + cdDate.substring(0, 4);
                         String cdate = LocalDate.now().toString();
                         cdate = cdate.substring(5, 7) + "/" + cdate.substring(8) + "/" + cdate.substring(0, 4);
                         Saving account = new Saving(temp.getSsn(), acctNumField.getText(), Double.parseDouble(balanceField.getText()),
                                 Double.parseDouble(balanceField.getText()), Main.cdInterest, cdate,
-                                true, cdDate.toString(), "CD", null);
+                                true, cdDate.toString(), "CD", "null");
                         Main.savings.add(account);
                     }
                     if (accountType.getSelectedItem().equals("Short Term Loan")) {
-                        if (backupAccount.getText().isEmpty()) {
-                            backup = false;
-                            backupAccount.setText("null");
-                        }
-                        LocalDate dueDate = LocalDate.now().plusMonths(1);
+                        backup = false;
+                        backupAccount.setText("null");
+
+                        String cdate = LocalDate.now().toString();
+                        cdate = cdate.substring(5, 7) + "/" + cdate.substring(8) + "/" + cdate.substring(0, 4);
+                        String dueDate = LocalDate.now().plusMonths(1).toString();
+                        dueDate = dueDate.substring(5, 7) + "/" + dueDate.substring(8) + "/" + dueDate.substring(0, 4);
                         Loan account = new Loan(temp.getSsn(), acctNumField.getText(), Double.parseDouble(balanceField.getText()),
-                                Double.parseDouble(balanceField.getText()), Main.stlInterest, dueDate.toString(), null,
-                                Double.parseDouble(balanceField.getText())*.05, null, false, "Short Term Loan", null);
+                                Double.parseDouble(balanceField.getText()), Main.stlInterest, dueDate,cdate ,
+                                Double.parseDouble(balanceField.getText())*.05, cdate, false, "Short Term Loan", cdate);
                         Main.loans.add(account);
                     }
                     if (accountType.getSelectedItem().equals("Long Term Loan")) {
                         backup = false;
                         backupAccount.setText("null");
-                        LocalDate dueDate = LocalDate.now().plusMonths(1);
+                        String cdate = LocalDate.now().toString();
+                        cdate = cdate.substring(5, 7) + "/" + cdate.substring(8) + "/" + cdate.substring(0, 4);
+                        String dueDate = LocalDate.now().plusMonths(1).toString();
+                        dueDate = dueDate.substring(5, 7) + "/" + dueDate.substring(8) + "/" + dueDate.substring(0, 4);
                         Loan account = new Loan(temp.getSsn(), acctNumField.getText(), Double.parseDouble(balanceField.getText()),
-                                Double.parseDouble(balanceField.getText()), Main.ltlInterest, dueDate.toString(), null,
-                                Double.parseDouble(balanceField.getText())*.025, null, false, "Long Term Loan", null);
+                                Double.parseDouble(balanceField.getText()), Main.ltlInterest, dueDate, cdate,
+                                Double.parseDouble(balanceField.getText())*.025, cdate, false, "Long Term Loan", cdate);
                         Main.loans.add(account);
                     }
                     if (accountType.getSelectedItem().equals("Credit Card")) {
                         backup = false;
                         backupAccount.setText("null");
-                        LocalDate dueDate = LocalDate.now().plusMonths(1);
+                        String cdate = LocalDate.now().toString();
+                        cdate = cdate.substring(5, 7) + "/" + cdate.substring(8) + "/" + cdate.substring(0, 4);
+                        String dueDate = LocalDate.now().plusMonths(1).toString();
+                        dueDate = dueDate.substring(5, 7) + "/" + dueDate.substring(8) + "/" + dueDate.substring(0, 4);
                         Loan account = new Loan(temp.getSsn(), acctNumField.getText(), Double.parseDouble(balanceField.getText()),
-                                Double.parseDouble(balanceField.getText()), Main.ccInterest, dueDate.toString(), null,
-                                0.0, null, false, "Credit Card", null);
+                                Double.parseDouble(balanceField.getText()), Main.ccInterest, dueDate, cdate,
+                                0.0, cdate, false, "Credit Card", cdate);
                         Main.loans.add(account);
                     }
                 }

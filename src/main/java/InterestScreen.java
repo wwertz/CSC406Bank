@@ -74,6 +74,9 @@ public class InterestScreen {
                 if (savingsField != null && temp > 0) {
                     Main.savingsInterest = temp;
                     csaving.setText(Double.toString(Main.savingsInterest));
+                    for(int i = 0; i < Main.savings.size(); i++){
+                        Main.savings.get(i).setInterestRate(temp);
+                    }
                 }
             }
         });
